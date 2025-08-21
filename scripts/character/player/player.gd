@@ -1,9 +1,35 @@
 extends CharacterBody2D
 
-var speed : float = 20000.0
+@export var impulso_salto : float = 800
+@export var speed = 12000
+@export var gravedad : float = 2200
+#@export var sprite : AnimatedSprite2D
 
-func _process(delta):
-	var direction = Input.get_axis("move_left", "move_right")
-	velocity.x = direction * speed * delta
-	
-	move_and_slide()
+@export var hud : Control
+
+var vida : int
+var max_vida : int = 500
+
+func _ready():
+	inicializar_jugador()
+	#Globales.jugador = self
+	#actualizar_hud()
+
+func _physics_process(_delta):
+	pass
+
+func inicializar_jugador():
+	vida = max_vida
+
+func morir():
+	queue_free()
+
+func herir(cantidad : int):
+	vida -= cantidad
+	if vida <= 0:
+		morir()
+
+##func actualizar_hud():
+	#hud.vida = vida
+	#hud.max_vida = max_vida
+	#hud.actualizar_valores()
