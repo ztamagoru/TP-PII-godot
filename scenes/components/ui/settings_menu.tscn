@@ -28,7 +28,7 @@ theme_override_constants/margin_bottom = 75
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="CloseSettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Close"
@@ -100,5 +100,6 @@ layout_mode = 2
 [node name="FullscreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings"]
 layout_mode = 2
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
