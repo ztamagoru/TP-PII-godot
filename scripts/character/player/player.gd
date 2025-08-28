@@ -11,6 +11,7 @@ var vida : int
 var max_vida : int = 500
 
 func _ready():
+	Globales.jugador = self
 	inicializar_jugador()
 	#Globales.jugador = self
 	#actualizar_hud()
