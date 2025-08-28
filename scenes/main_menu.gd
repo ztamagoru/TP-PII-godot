@@ -3,7 +3,7 @@ extends Control
 @export var tutorial : PackedScene
 
 func _ready():
-	pass
+	Globales.main_menu = self
 
 func new_game_pressed():
 	get_tree().change_scene_to_packed(tutorial)

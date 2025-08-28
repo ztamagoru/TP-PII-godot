@@ -26,5 +26,5 @@ func _process(delta: float) -> void:
 	if confirm_quit.visible:
 		confirm_quit.visible = !confirm_quit.visible
 	
-	if settings_menu.visible:
+	if settings_menu.visible and not is_instance_valid(Globales.main_menu):
 		settings_menu.visible = !settings_menu.visible

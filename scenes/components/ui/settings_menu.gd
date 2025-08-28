@@ -29,6 +29,3 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_close_settings_button_pressed() -> void:
 	visible = !visible
-
-#func _on_visibility_changed() -> void:
-	#update_button_values()
