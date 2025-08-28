@@ -1,7 +1,9 @@
 extends CanvasLayer
 
 var gui_components = [
-	"res://scenes/components/ui/settings_menu.tscn"
+	"res://scenes/components/ui/pause_menu.tscn"
+	, "res://scenes/components/ui/settings_menu.tscn"
+	, "res://scenes/components/ui/confirm_quit.tscn"
 ]
 
 var resolutions = {
@@ -21,6 +23,12 @@ func _ready():
 		var new_scene = load(i).instantiate()
 		add_child(new_scene)
 		new_scene.hide()
+
+func _input(_event):
+	if Input.is_action_just_pressed("toggle_pause"):
+		var pause_menu = get_node("/root/GUI/PauseMenu")
+		
+		pause_menu.visible = !pause_menu.visible
 
 func center_window():
 	var screen_center = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
