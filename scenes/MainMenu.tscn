@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://svu0lyyb4fws"]
+[gd_scene load_steps=3 format=3 uid="uid://svu0lyyb4fws"]
 
 [ext_resource type="Script" uid="uid://cbqphs2cn0bb8" path="res://scenes/main_menu.gd" id="1_yqorp"]
+[ext_resource type="PackedScene" uid="uid://bqkpl6jodajhc" path="res://scenes/niveles/tutorial_movimiento.tscn" id="2_0ykhv"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqorp")
+tutorial = ExtResource("2_0ykhv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -37,7 +39,6 @@ text = "Continuar"
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-disabled = true
 text = "Ajustes"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]

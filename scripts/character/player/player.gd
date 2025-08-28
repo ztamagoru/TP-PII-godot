@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var impulso_salto : float = 800
-@export var speed = 12000
+@export var speed = 20000
 @export var gravedad : float = 2200
-#@export var sprite : AnimatedSprite2D
+@export var sprite : AnimatedSprite2D
 
 @export var hud : Control
 
@@ -11,6 +11,7 @@ var vida : int
 var max_vida : int = 500
 
 func _ready():
+	Globales.jugador = self
 	inicializar_jugador()
 	#Globales.jugador = self
 	#actualizar_hud()
