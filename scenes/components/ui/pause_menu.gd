@@ -15,13 +15,16 @@ func _on_settings_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	var confirm_quit = get_node("/root/GUI/ConfirmQuit")
 	confirm_quit.visible = !confirm_quit.visible
-	
 
 func _process(delta: float) -> void:
 	if visible:
 		return
 	
 	var settings_menu = get_node("/root/GUI/SettingsMenu")
+	var confirm_quit = get_node("/root/GUI/ConfirmQuit")
+	
+	if confirm_quit.visible:
+		confirm_quit.visible = !confirm_quit.visible
 	
 	if settings_menu.visible:
 		settings_menu.visible = !settings_menu.visible
