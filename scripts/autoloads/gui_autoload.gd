@@ -29,6 +29,7 @@ func _input(_event):
 		var pause_menu = get_node("/root/GUI/PauseMenu")
 		
 		pause_menu.visible = !pause_menu.visible
+		pause_menu.toggle_level_pause()
 
 func center_window():
 	var screen_center = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
