@@ -17,5 +17,5 @@ func physics_update(_delta):
 		
 	if Input.is_action_pressed("mover_derecha") or Input.is_action_pressed("mover_izquierda"):
 		get_parent().ir_a_estado_siguiente("Caminando")
-	if Input.is_action_just_pressed("atacar"):
-		get_parent().ir_a_estado_siguiente("Atacando")
+	#if Input.is_action_just_pressed("atacar"):
+		#get_parent().ir_a_estado_siguiente("Atacando")
