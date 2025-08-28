@@ -1,4 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=34 format=3 uid="uid://bqkpl6jodajhc"]
+
+[ext_resource type="Script" uid="uid://cury1qnerll5m" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
+[ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
 
 [sub_resource type="Gradient" id="Gradient_ouyk1"]
 offsets = PackedFloat32Array(0)
@@ -102,10 +105,14 @@ colors = PackedColorArray(0.494118, 0, 0.717647, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kbase"]
 gradient = SubResource("Gradient_7u5yi")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqf3n"]
+size = Vector2(23, 370)
+
 [node name="TutorialMovimiento" type="Node2D"]
+script = ExtResource("1_ujkkx")
 
 [node name="FondoT1" type="Sprite2D" parent="."]
-position = Vector2(576, 325)
+position = Vector2(574, 322)
 scale = Vector2(18, 10.1406)
 texture = SubResource("GradientTexture2D_yktgn")
 
@@ -123,12 +130,12 @@ texture = SubResource("GradientTexture2D_l52h3")
 position = Vector2(525, 521)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT1"]
-position = Vector2(49.5, 57)
+position = Vector2(48.5, 52)
 shape = SubResource("RectangleShape2D_ouyk1")
 
 [node name="Sprite2D" type="Sprite2D" parent="PisoT1"]
-position = Vector2(50.25, 56)
-scale = Vector2(18.0078, 2.20313)
+position = Vector2(48.25, 53.7499)
+scale = Vector2(18.0078, 2.22656)
 texture = SubResource("GradientTexture2D_77138")
 
 [node name="TechoT1" type="StaticBody2D" parent="."]
@@ -159,11 +166,11 @@ texture = SubResource("GradientTexture2D_10qo4")
 position = Vector2(1300, 579)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT2_1"]
-position = Vector2(72.375, -2.25)
+position = Vector2(72.375, -6.25)
 shape = SubResource("RectangleShape2D_yktgn")
 
 [node name="Sprite2D" type="Sprite2D" parent="PisoT2_1"]
-position = Vector2(73.0001, -2.13385e-05)
+position = Vector2(71, -4.00003)
 scale = Vector2(6.84375, 2.25)
 texture = SubResource("GradientTexture2D_pbop1")
 
@@ -238,3 +245,17 @@ shape = SubResource("RectangleShape2D_b61a7")
 position = Vector2(-0.999931, 1.49998)
 scale = Vector2(2.34375, 0.546875)
 texture = SubResource("GradientTexture2D_kbase")
+
+[node name="Player" parent="." instance=ExtResource("1_yktgn")]
+position = Vector2(363, 432)
+
+[node name="PasoDeNivel1" type="Area2D" parent="."]
+position = Vector2(1027, 389)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PasoDeNivel1"]
+position = Vector2(111.5, -63)
+shape = SubResource("RectangleShape2D_fqf3n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(573, 323)

@@ -4,7 +4,6 @@ class_name Estado
 var jugador : CharacterBody2D
 
 func _ready():
-	#pass
 	jugador = get_parent().jugador
 
 func enter():

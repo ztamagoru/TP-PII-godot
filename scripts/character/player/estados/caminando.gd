@@ -2,7 +2,7 @@ extends Estado
 
 func enter():
 	pass
-	#jugador.sprite.play("Why are u runnin")
+	jugador.sprite.play("caminar")
 
 func update(delta):
 	if Input.is_action_pressed("mover_derecha"):
