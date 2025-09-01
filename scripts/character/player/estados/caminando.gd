@@ -2,7 +2,7 @@ extends Estado
 
 func enter():
 	pass
-	#jugador.sprite.play("Why are u runnin")
+	jugador.sprite.play("caminar")
 
 func update(delta):
 	if Input.is_action_pressed("mover_derecha"):
@@ -19,5 +19,5 @@ func update(delta):
 		get_parent().ir_a_estado_siguiente("Cayendo")
 	if Input.is_action_pressed("salto"):
 		get_parent().ir_a_estado_siguiente("Saltando")
-	if Input.is_action_just_pressed("atacar"):
-		get_parent().ir_a_estado_siguiente("Atacando")
+	#if Input.is_action_just_pressed("atacar"):
+		#get_parent().ir_a_estado_siguiente("Atacando")
