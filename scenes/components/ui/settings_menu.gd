@@ -2,6 +2,10 @@ extends Control
 
 @onready var resolutions_option_button = $MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton
 
+@onready var master_label	= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/CurrentMasterVolume
+@onready var music_label	= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2/CurrentMusicVolume
+@onready var sfx_label		= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3/CurrentSFXVolume
+
 func _ready():
 	add_resolution()
 
@@ -32,9 +36,12 @@ func _on_close_settings_button_pressed() -> void:
  
 func _on_master_volume_slider_value_changed(value) -> void:
 	AudioServer.set_bus_volume_db(0, value)
+	master_label.text = str(int(value))
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(1, value)
+	music_label.text = str(int(value))
 
 func _on_sfx_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(2, value)
+	sfx_label.text = str(int(value))
