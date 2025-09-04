@@ -2,6 +2,14 @@ extends Control
 
 func _on_reanudar_button_pressed() -> void:
 	visible = !visible
+	
+	toggle_level_pause()
+
+func toggle_level_pause():
+	if Globales.current_level.process_mode == PROCESS_MODE_DISABLED:
+		Globales.current_level.process_mode = PROCESS_MODE_ALWAYS
+	else:
+		Globales.current_level.process_mode = PROCESS_MODE_DISABLED
 
 func _on_settings_button_pressed() -> void:
 	var settings_menu = get_node("/root/GUI/SettingsMenu")

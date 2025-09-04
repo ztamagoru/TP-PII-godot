@@ -25,10 +25,11 @@ func _ready():
 		new_scene.hide()
 
 func _input(_event):
-	if Input.is_action_just_pressed("toggle_pause"):
+	if Input.is_action_just_pressed("toggle_pause") and not is_instance_valid(Globales.main_menu):
 		var pause_menu = get_node("/root/GUI/PauseMenu")
 		
 		pause_menu.visible = !pause_menu.visible
+		pause_menu.toggle_level_pause()
 
 func center_window():
 	var screen_center = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
