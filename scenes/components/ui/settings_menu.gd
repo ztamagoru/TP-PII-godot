@@ -29,3 +29,12 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_close_settings_button_pressed() -> void:
 	visible = !visible
+ 
+func _on_master_volume_slider_value_changed(value) -> void:
+	AudioServer.set_bus_volume_db(0, value)
+
+func _on_music_volume_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(1, value)
+
+func _on_sfx_volume_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(2, value)

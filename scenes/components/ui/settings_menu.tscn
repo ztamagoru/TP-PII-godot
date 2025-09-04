@@ -37,16 +37,98 @@ alignment = 2
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 2
+current_tab = 0
 
 [node name="Audio" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="AudioSettingsLabels" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="MasterVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabels"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="AudioSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="MasterVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings"]
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="AudioSettingsLabels" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="MusicVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2/AudioSettingsLabels"]
+layout_mode = 2
+text = "Música"
+
+[node name="AudioSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2/AudioSettings"]
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="AudioSettingsLabels" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="SFXVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3/AudioSettingsLabels"]
+layout_mode = 2
+text = "SFX"
+
+[node name="AudioSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="SFXVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3/AudioSettings"]
+layout_mode = 2
+max_value = 10.0
+value = 10.0
 
 [node name="Controles" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -58,6 +140,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Video" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 270
 metadata/_tab_index = 2
@@ -101,5 +184,8 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2/AudioSettings/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3/AudioSettings/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]

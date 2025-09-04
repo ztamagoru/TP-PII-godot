@@ -24,7 +24,7 @@ func _on_quit_button_pressed() -> void:
 	var confirm_quit = get_node("/root/GUI/ConfirmQuit")
 	confirm_quit.visible = !confirm_quit.visible
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible:
 		return
 	
