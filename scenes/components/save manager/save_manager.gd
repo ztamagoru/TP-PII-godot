@@ -29,7 +29,7 @@ func load_settings():
 
 func save_settings():
 	var settings_file = FileAccess.open(route_settings, FileAccess.WRITE)
-	print("guardando valores default")
+	print("guardando settings")
 	settings_file.store_line(JSON.stringify(settings, "\t"))
 
 func set_default_settings():
