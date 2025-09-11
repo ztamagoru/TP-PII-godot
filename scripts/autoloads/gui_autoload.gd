@@ -19,6 +19,13 @@ var resolutions = {
 	"800x600": Vector2i(800,600)
 }
 
+var vsync_modes = {
+	"Desactivado": DisplayServer.VSYNC_DISABLED,
+	"Activado": DisplayServer.VSYNC_ENABLED,
+	"Adaptativo": DisplayServer.VSYNC_ADAPTIVE,
+	"Mailbox": DisplayServer.VSYNC_MAILBOX
+}
+
 func _ready():
 	for i in gui_components:
 		var new_scene = load(i).instantiate()

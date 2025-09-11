@@ -40,6 +40,6 @@ func set_default_settings():
 		"fullscreen": false,
 		"resolution": "1152, 648",
 		"language": "es",
-		"vsync": true,
+		"vsync": 0,
 		"brightness": 1.0
 	}

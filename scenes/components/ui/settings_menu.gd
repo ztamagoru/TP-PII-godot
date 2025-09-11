@@ -1,6 +1,7 @@
 extends Control
 
 @onready var resolutions_option_button	= $MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton
+@onready var vsync_option_button		= $MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/VsyncOptionButton
 @onready var fullscreen_toggle			= $MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/FullscreenCheckBox
 
 @onready var master_label	= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/CurrentMasterVolume
@@ -10,10 +11,17 @@ extends Control
 @onready var sfx_label		= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3/CurrentSFXVolume
 @onready var sfx_slider		= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3/AudioSettings/SFXVolumeSlider
 
+
+
 func _ready():
 	add_resolution()
+	add_vsync()
 	load_video_settings()
 	load_audio_settings()
+	load_control_settings()
+
+func _on_close_settings_button_pressed() -> void:
+	visible = !visible
 
 #region video settings
 
@@ -21,9 +29,9 @@ func add_resolution():
 	for r in GUI.resolutions:
 		resolutions_option_button.add_item(r)
 	
-	update_button_values()
+	update_resolution_button_values()
 
-func update_button_values():
+func update_resolution_button_values():
 	var window_size_string = str(get_window().size.x, "x", get_window().size.y)
 	var resolutions_index = GUI.resolutions.keys().find(window_size_string)
 	
@@ -65,8 +73,6 @@ func get_closest_resolution(target_str: String):
 			closest_dist = dist
 			closest_key = key
 	
-	print("corrected wrong resolution from: ", target_str, " to ", closest_key)
-	
 	return closest_key
 
 func _on_resolution_option_button_item_selected(index):
@@ -86,9 +92,29 @@ func _on_fullscreen_check_box_toggled(toggled_on):
 	SaveManager.settings.fullscreen = toggled_on
 	SaveManager.save_settings()
 
-func _on_close_settings_button_pressed() -> void:
-	visible = !visible
- 
+func add_vsync():
+	for r in GUI.vsync_modes:
+		vsync_option_button.add_item(r)
+	
+	update_vsync_button_values()
+
+func update_vsync_button_values():
+	var current_vsync = SaveManager.settings.vsync
+	
+	var saved_mode = SaveManager.settings.vsync
+	for i in vsync_option_button.get_item_count():
+		var name = vsync_option_button.get_item_text(i)
+		if GUI.vsync_modes[name] == saved_mode:
+			vsync_option_button.selected = i
+			break
+
+func _on_vsync_option_button_item_selected(index):
+	var key = vsync_option_button.get_item_text(index)
+	DisplayServer.window_set_vsync_mode(GUI.vsync_modes[key])
+	
+	SaveManager.settings.vsync = GUI.vsync_modes[key]
+	SaveManager.save_settings()
+
 #endregion
 
 #region audio settings
@@ -126,5 +152,12 @@ func _on_sfx_volume_slider_value_changed(value: float) -> void:
 	
 	SaveManager.settings.volume_sfx = value
 	SaveManager.save_settings()
+
+#endregion
+
+#region control settings
+
+func load_control_settings():
+	pass
 
 #endregion

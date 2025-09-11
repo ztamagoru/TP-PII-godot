@@ -186,6 +186,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "Pantalla completa"
 
+[node name="VsyncLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettingsLabels"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Vsync"
+
 [node name="VideoSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -198,9 +203,13 @@ layout_mode = 2
 [node name="FullscreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings"]
 layout_mode = 2
 
+[node name="VsyncOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings"]
+layout_mode = 2
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2/AudioSettings/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3/AudioSettings/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/VsyncOptionButton" to="." method="_on_vsync_option_button_item_selected"]
