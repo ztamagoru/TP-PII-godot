@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dltr5bbjeqed4"]
+
+[ext_resource type="Script" uid="uid://dpecul86opbdx" path="res://scenes/components/paso_de_nivel/paso_de_nivel.gd" id="1_0j0l6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqf3n"]
+size = Vector2(23, 370)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83sip"]
+size = Vector2(545, 568)
+
+[node name="PasoDeNivel1" type="Area2D" node_paths=PackedStringArray("pared_de_seguridad")]
+script = ExtResource("1_0j0l6")
+pared_de_seguridad = NodePath("ParedDeSeguridad1/CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(132.5, -64)
+shape = SubResource("RectangleShape2D_fqf3n")
+
+[node name="ParedDeSeguridad1" type="StaticBody2D" parent="."]
+position = Vector2(2322, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedDeSeguridad1"]
+position = Vector2(-2477, -64)
+shape = SubResource("RectangleShape2D_83sip")
+disabled = true

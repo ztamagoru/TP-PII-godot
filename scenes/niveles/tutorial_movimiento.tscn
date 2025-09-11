@@ -1,7 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=36 format=3 uid="uid://bqkpl6jodajhc"]
 
-[ext_resource type="Script" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
+[ext_resource type="Script" uid="uid://cury1qnerll5m" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
+[ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="3_77138"]
+[ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="3_l52h3"]
 
 [sub_resource type="Gradient" id="Gradient_ouyk1"]
 offsets = PackedFloat32Array(0)
@@ -50,7 +52,7 @@ size = Vector2(440.75, 139.5)
 
 [sub_resource type="Gradient" id="Gradient_77138"]
 offsets = PackedFloat32Array(0.33913)
-colors = PackedColorArray(0.996078, 0.788235, 0, 1)
+colors = PackedColorArray(0.972549, 0.690196, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pbop1"]
 gradient = SubResource("Gradient_77138")
@@ -60,7 +62,7 @@ size = Vector2(1153, 138)
 
 [sub_resource type="Gradient" id="Gradient_10qo4"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.996078, 0.788235, 0, 1)
+colors = PackedColorArray(0.972549, 0.690196, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b61a7"]
 gradient = SubResource("Gradient_10qo4")
@@ -108,11 +110,12 @@ gradient = SubResource("Gradient_7u5yi")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqf3n"]
 size = Vector2(23, 370)
 
-[node name="TutorialMovimiento" type="Node2D"]
+[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara")]
 script = ExtResource("1_ujkkx")
+camara = NodePath("Camera2D")
 
 [node name="FondoT1" type="Sprite2D" parent="."]
-position = Vector2(574, 322)
+position = Vector2(574, 324)
 scale = Vector2(18, 10.1406)
 texture = SubResource("GradientTexture2D_yktgn")
 
@@ -163,7 +166,9 @@ scale = Vector2(18.0312, 2.22656)
 texture = SubResource("GradientTexture2D_10qo4")
 
 [node name="PisoT2_1" type="StaticBody2D" parent="."]
-position = Vector2(1300, 579)
+position = Vector2(1330, 580)
+scale = Vector2(1.2, 1)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT2_1"]
 position = Vector2(72.375, -6.25)
@@ -182,7 +187,7 @@ position = Vector2(12.75, -2.5)
 shape = SubResource("RectangleShape2D_yktgn")
 
 [node name="Sprite2D" type="Sprite2D" parent="PistoT2"]
-position = Vector2(15.5, -1.00002)
+position = Vector2(15.5, -1.00003)
 scale = Vector2(7.07813, 2.25)
 texture = SubResource("GradientTexture2D_pbop1")
 
@@ -202,12 +207,12 @@ texture = SubResource("GradientTexture2D_b61a7")
 position = Vector2(2397, 589)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT3"]
-position = Vector2(26.5, -13)
+position = Vector2(27.5, -12)
 shape = SubResource("RectangleShape2D_77138")
 
 [node name="Sprite2D" type="Sprite2D" parent="PisoT3"]
-position = Vector2(27, -12)
-scale = Vector2(3.65625, 2.26563)
+position = Vector2(27, -11.2499)
+scale = Vector2(3.656, 2.25)
 texture = SubResource("GradientTexture2D_fqf3n")
 
 [node name="PisoT3_1" type="StaticBody2D" parent="."]
@@ -247,15 +252,26 @@ scale = Vector2(2.34375, 0.546875)
 texture = SubResource("GradientTexture2D_kbase")
 
 [node name="Player" parent="." instance=ExtResource("1_yktgn")]
-position = Vector2(363, 432)
+position = Vector2(536, 387)
 
-[node name="PasoDeNivel1" type="Area2D" parent="."]
-position = Vector2(1027, 389)
+[node name="FinalDeNivel1" type="Area2D" parent="."]
+position = Vector2(3349, 387)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PasoDeNivel1"]
-position = Vector2(111.5, -63)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalDeNivel1"]
+position = Vector2(105.5, -64)
 shape = SubResource("RectangleShape2D_fqf3n")
+
+[node name="PasoDeNivel1" parent="." node_paths=PackedStringArray("camara") instance=ExtResource("3_77138")]
+position = Vector2(1031, 389)
+camara = NodePath("../Camera2D")
+movimiento = Vector2(1152, 0)
+
+[node name="PasoDeNivel2" parent="." node_paths=PackedStringArray("camara") instance=ExtResource("3_77138")]
+position = Vector2(2189, 389)
+camara = NodePath("../Camera2D")
+movimiento = Vector2(1162, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 323)
+script = ExtResource("3_l52h3")
