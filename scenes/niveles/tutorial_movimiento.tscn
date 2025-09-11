@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=39 format=3 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://cury1qnerll5m" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
@@ -87,16 +87,6 @@ colors = PackedColorArray(0.988235, 0, 0.192157, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_83sip"]
 gradient = SubResource("Gradient_fqf3n")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_10qo4"]
-size = Vector2(146, 30)
-
-[sub_resource type="Gradient" id="Gradient_83sip"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.495401, 0.00183118, 0.721108, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7u5yi"]
-gradient = SubResource("Gradient_83sip")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b61a7"]
 size = Vector2(147.5, 34.5)
 
@@ -107,8 +97,80 @@ colors = PackedColorArray(0.494118, 0, 0.717647, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kbase"]
 gradient = SubResource("Gradient_7u5yi")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10qo4"]
+size = Vector2(146, 30)
+
+[sub_resource type="Gradient" id="Gradient_83sip"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.495401, 0.00183118, 0.721108, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7u5yi"]
+gradient = SubResource("Gradient_83sip")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqf3n"]
 size = Vector2(23, 370)
+
+[sub_resource type="Animation" id="Animation_77138"]
+resource_name = "MovimientoPlataformas"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlataformaVoladora2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2851, 518), Vector2(3012, 518), Vector2(3145, 518)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlataformaVoladora1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2690, 314), Vector2(2690, 439), Vector2(2690, 596)]
+}
+
+[sub_resource type="Animation" id="Animation_pbop1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlataformaVoladora2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2959, 426)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlataformaVoladora1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2690, 439)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10qo4"]
+_data = {
+&"MovimientoPlataformas": SubResource("Animation_77138"),
+&"RESET": SubResource("Animation_pbop1")
+}
 
 [node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara")]
 script = ExtResource("1_ujkkx")
@@ -227,20 +289,9 @@ position = Vector2(-31, -16.5)
 scale = Vector2(3.6875, 2.29687)
 texture = SubResource("GradientTexture2D_83sip")
 
-[node name="PlataformaVoladora1" type="StaticBody2D" parent="."]
-position = Vector2(2690, 481)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaVoladora1"]
-position = Vector2(-6, -2)
-shape = SubResource("RectangleShape2D_10qo4")
-
-[node name="Sprite2D" type="Sprite2D" parent="PlataformaVoladora1"]
-position = Vector2(-6.99999, -1.00001)
-scale = Vector2(2.3125, 0.531249)
-texture = SubResource("GradientTexture2D_7u5yi")
-
-[node name="PlataformaVoladora2" type="StaticBody2D" parent="."]
-position = Vector2(2959, 480)
+[node name="PlataformaVoladora2" type="AnimatableBody2D" parent="."]
+position = Vector2(2959, 426)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaVoladora2"]
 position = Vector2(-1, 1)
@@ -250,6 +301,19 @@ shape = SubResource("RectangleShape2D_b61a7")
 position = Vector2(-0.999931, 1.49998)
 scale = Vector2(2.34375, 0.546875)
 texture = SubResource("GradientTexture2D_kbase")
+
+[node name="PlataformaVoladora1" type="AnimatableBody2D" parent="."]
+position = Vector2(2690, 439)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaVoladora1"]
+position = Vector2(-6, -2)
+shape = SubResource("RectangleShape2D_10qo4")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlataformaVoladora1"]
+position = Vector2(-6.99999, -1.00001)
+scale = Vector2(2.3125, 0.531249)
+texture = SubResource("GradientTexture2D_7u5yi")
 
 [node name="Player" parent="." instance=ExtResource("1_yktgn")]
 position = Vector2(536, 387)
@@ -275,3 +339,8 @@ movimiento = Vector2(1162, 0)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 323)
 script = ExtResource("3_l52h3")
+
+[node name="Movimiento_plataformas" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_10qo4")
+}

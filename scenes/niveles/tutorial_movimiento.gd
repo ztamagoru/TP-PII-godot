@@ -8,6 +8,7 @@ extends Node2D
 
 func _ready():
 	Globales.current_level = self
+	$Movimiento_plataformas.play("MovimientoPlataformas")
 
 func _process(_delta):
 	pass
