@@ -1,6 +1,7 @@
 extends Control
 
-@onready var resolutions_option_button = $MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton
+@onready var resolutions_option_button	= $MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton
+@onready var fullscreen_toggle			= $MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/FullscreenCheckBox
 
 @onready var master_label	= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/CurrentMasterVolume
 @onready var master_slider	= $MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/MasterVolumeSlider
@@ -11,33 +12,57 @@ extends Control
 
 func _ready():
 	add_resolution()
+	load_video_settings()
 	load_audio_settings()
+
+#region video settings
 
 func add_resolution():
 	for r in GUI.resolutions:
 		resolutions_option_button.add_item(r)
+	
+	update_button_values()
 
 func update_button_values():
 	var window_size_string = str(get_window().size.x, "x", get_window().size.y)
 	var resolutions_index = GUI.resolutions.keys().find(window_size_string)
 	
-	resolutions_option_button.selected = resolutions_index
+	if resolutions_index != null:
+		resolutions_option_button.selected = resolutions_index
+
+func load_video_settings():
+	fullscreen_toggle.button_pressed = SaveManager.settings.fullscreen
+	
+	if SaveManager.settings.fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	DisplayServer.window_set_size(GUI.resolutions[SaveManager.settings.resolution])
+	GUI.center_window()
 
 func _on_resolution_option_button_item_selected(index):
 	var key = resolutions_option_button.get_item_text(index)
 	DisplayServer.window_set_size(GUI.resolutions[key])
+	SaveManager.settings.resolution = key
 	
 	GUI.center_window()
+	SaveManager.save_settings()
 
-func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
+func _on_fullscreen_check_box_toggled(toggled_on):
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	SaveManager.settings.fullscreen = toggled_on
+	SaveManager.save_settings()
 
 func _on_close_settings_button_pressed() -> void:
 	visible = !visible
  
+#endregion
+
 #region audio settings
 
 func load_audio_settings():

@@ -37,8 +37,8 @@ func set_default_settings():
 		"volume_master": 1.0,
 		"volume_music": 1.0,
 		"volume_sfx": 1.0,
-		"fullscreen": true,
-		"resolution": [1920, 1080],
+		"fullscreen": false,
+		"resolution": [1152, 648],
 		"language": "es",
 		"vsync": true,
 		"brightness": 1.0
