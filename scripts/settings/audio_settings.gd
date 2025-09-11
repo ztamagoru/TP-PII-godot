@@ -1,11 +1,11 @@
 extends VBoxContainer
 
-@onready var master_label	= $MarginContainer/VBoxContainer/HBoxContainer/CurrentMasterVolume
+@onready var master_label	= $MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabel2/CurrentMasterVolume
 @onready var master_slider	= $MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/MasterVolumeSlider
-@onready var music_label	= $MarginContainer/VBoxContainer/HBoxContainer2/CurrentMusicVolume
-@onready var music_slider	= $MarginContainer/VBoxContainer/HBoxContainer2/AudioSettings/MusicVolumeSlider
-@onready var sfx_label		= $MarginContainer/VBoxContainer/HBoxContainer3/CurrentSFXVolume
-@onready var sfx_slider		= $MarginContainer/VBoxContainer/HBoxContainer3/AudioSettings/SFXVolumeSlider
+@onready var music_label	= $MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabel2/CurrentMusicVolume
+@onready var music_slider	= $MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/MusicVolumeSlider
+@onready var sfx_label		= $MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabel2/CurrentSFXVolume
+@onready var sfx_slider		= $MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/SFXVolumeSlider
 
 func _ready():
 	load_audio_settings()
