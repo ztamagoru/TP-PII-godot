@@ -1,111 +1,87 @@
-[gd_scene load_steps=39 format=3 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=22 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://cury1qnerll5m" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
 [ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="3_77138"]
 [ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="3_l52h3"]
+[ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="5_pbop1"]
+[ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="6_10qo4"]
 
-[sub_resource type="Gradient" id="Gradient_ouyk1"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.616395, 1, 0.640118, 1)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10qo4"]
+texture = ExtResource("5_pbop1")
+texture_region_size = Vector2i(64, 64)
+4:2/0 = 0
+4:3/0 = 0
+4:4/0 = 0
+3:6/0 = 0
+1:14/0 = 0
+8:0/0 = 0
+7:13/0 = 0
+7:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:15/0 = 0
+7:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:14/0 = 0
+7:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:3/0 = 0
+7:17/0 = 0
+2:17/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+4:17/0 = 0
+2:16/0 = 0
+6:15/0 = 0
+8:2/0 = 0
+7:16/0 = 0
+0:7/0 = 0
+10:10/0 = 0
+10:12/0 = 0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yktgn"]
-gradient = SubResource("Gradient_ouyk1")
-fill_from = Vector2(0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clt3u"]
+size = Vector2(64, 48)
 
-[sub_resource type="Gradient" id="Gradient_yktgn"]
-offsets = PackedFloat32Array(0.0521739)
-colors = PackedColorArray(1, 0.892641, 0.414263, 1)
+[sub_resource type="PackedScene" id="PackedScene_b61a7"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("AnimatableBody2D", "Sprite2D", "scale", "texture", "CollisionShape2D", "position", "shape"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 0, 0, -1, 0, 0, 0, 0, 1, 1, -1, 2, 2, 0, 3, 1, 0, 0, 0, 4, 4, -1, 2, 5, 2, 6, 3, 0),
+"variants": [Vector2(0.5, 0.5), ExtResource("6_10qo4"), Vector2(0, -8), SubResource("RectangleShape2D_clt3u")],
+"version": 3
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ujkkx"]
-gradient = SubResource("Gradient_yktgn")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_b61a7"]
+scenes/1/scene = SubResource("PackedScene_b61a7")
 
-[sub_resource type="Gradient" id="Gradient_ujkkx"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0.699991, 0.754185, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l52h3"]
-gradient = SubResource("Gradient_ujkkx")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouyk1"]
-size = Vector2(1153, 140)
-
-[sub_resource type="Gradient" id="Gradient_l52h3"]
-offsets = PackedFloat32Array(0.00869565)
-colors = PackedColorArray(0.494447, 0.879044, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_77138"]
-gradient = SubResource("Gradient_l52h3")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujkkx"]
-size = Vector2(1149, 139)
-
-[sub_resource type="Gradient" id="Gradient_pbop1"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.989265, 0, 0.193324, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_10qo4"]
-gradient = SubResource("Gradient_pbop1")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yktgn"]
-size = Vector2(440.75, 139.5)
-
-[sub_resource type="Gradient" id="Gradient_77138"]
-offsets = PackedFloat32Array(0.33913)
-colors = PackedColorArray(0.972549, 0.690196, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pbop1"]
-gradient = SubResource("Gradient_77138")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l52h3"]
-size = Vector2(1153, 138)
-
-[sub_resource type="Gradient" id="Gradient_10qo4"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.972549, 0.690196, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b61a7"]
-gradient = SubResource("Gradient_10qo4")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_77138"]
-size = Vector2(235, 142)
-
-[sub_resource type="Gradient" id="Gradient_b61a7"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.988235, 0, 0.192157, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqf3n"]
-gradient = SubResource("Gradient_b61a7")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbop1"]
-size = Vector2(233.5, 145.5)
-
-[sub_resource type="Gradient" id="Gradient_fqf3n"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.988235, 0, 0.192157, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_83sip"]
-gradient = SubResource("Gradient_fqf3n")
+[sub_resource type="TileSet" id="TileSet_b61a7"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/16 = SubResource("TileSetAtlasSource_10qo4")
+sources/17 = SubResource("TileSetScenesCollectionSource_b61a7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b61a7"]
 size = Vector2(147.5, 34.5)
 
-[sub_resource type="Gradient" id="Gradient_7u5yi"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.494118, 0, 0.717647, 1)
+[sub_resource type="Gradient" id="Gradient_10qo4"]
+offsets = PackedFloat32Array(0, 0.616438)
+colors = PackedColorArray(0.207843, 0.823529, 0.466667, 1, 0.870588, 0.494118, 0.309804, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kbase"]
-gradient = SubResource("Gradient_7u5yi")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b61a7"]
+gradient = SubResource("Gradient_10qo4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10qo4"]
 size = Vector2(146, 30)
 
-[sub_resource type="Gradient" id="Gradient_83sip"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.495401, 0.00183118, 0.721108, 1)
+[sub_resource type="Gradient" id="Gradient_fqf3n"]
+offsets = PackedFloat32Array(0, 0.575342)
+colors = PackedColorArray(0.207843, 0.823529, 0.466667, 1, 0.870588, 0.494118, 0.309804, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7u5yi"]
-gradient = SubResource("Gradient_83sip")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_83sip"]
+gradient = SubResource("Gradient_fqf3n")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqf3n"]
 size = Vector2(23, 370)
@@ -176,118 +152,30 @@ _data = {
 script = ExtResource("1_ujkkx")
 camara = NodePath("Camera2D")
 
-[node name="FondoT1" type="Sprite2D" parent="."]
-position = Vector2(574, 324)
-scale = Vector2(18, 10.1406)
-texture = SubResource("GradientTexture2D_yktgn")
+[node name="Player" parent="." instance=ExtResource("1_yktgn")]
+z_index = 10
+position = Vector2(415, 383)
 
-[node name="FondoT2" type="Sprite2D" parent="."]
-position = Vector2(1729, 323)
-scale = Vector2(18.0469, 10.1328)
-texture = SubResource("GradientTexture2D_ujkkx")
-
-[node name="FondoT3" type="Sprite2D" parent="."]
-position = Vector2(2882, 325)
-scale = Vector2(17.9844, 10.1406)
-texture = SubResource("GradientTexture2D_l52h3")
-
-[node name="PisoT1" type="StaticBody2D" parent="."]
-position = Vector2(525, 521)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT1"]
-position = Vector2(48.5, 52)
-shape = SubResource("RectangleShape2D_ouyk1")
-
-[node name="Sprite2D" type="Sprite2D" parent="PisoT1"]
-position = Vector2(48.25, 53.7499)
-scale = Vector2(18.0078, 2.22656)
-texture = SubResource("GradientTexture2D_77138")
-
-[node name="TechoT1" type="StaticBody2D" parent="."]
-position = Vector2(525, 15)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TechoT1"]
-position = Vector2(49.5, 57)
-shape = SubResource("RectangleShape2D_ouyk1")
-
-[node name="Sprite2D" type="Sprite2D" parent="TechoT1"]
-position = Vector2(50, 57)
-scale = Vector2(18.0313, 2.20313)
-texture = SubResource("GradientTexture2D_77138")
-
-[node name="TechoT3" type="StaticBody2D" parent="."]
-position = Vector2(2892, 79)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TechoT3"]
-position = Vector2(-9.5, -8.5)
-shape = SubResource("RectangleShape2D_ujkkx")
-
-[node name="Sprite2D" type="Sprite2D" parent="TechoT3"]
-position = Vector2(-9.00003, -9)
-scale = Vector2(18.0312, 2.22656)
-texture = SubResource("GradientTexture2D_10qo4")
-
-[node name="PisoT2_1" type="StaticBody2D" parent="."]
-position = Vector2(1330, 580)
-scale = Vector2(1.2, 1)
+[node name="Tilemaps" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT2_1"]
-position = Vector2(72.375, -6.25)
-shape = SubResource("RectangleShape2D_yktgn")
+[node name="Fondo" type="TileMapLayer" parent="Tilemaps"]
+tile_map_data = PackedByteArray("AAAAAAIAEAABAA4AAAABAAIAEAABAA4AAAABAAMAEAABAA4AAAACAAMAEAABAA4AAAADAAMAEAABAA4AAAAAAAMAEAABAA4AAAAAAAQAEAABAA4AAAAAAAUAEAABAA4AAAAAAAYAEAABAA4AAAAAAAcAEAABAA4AAAABAAcAEAABAA4AAAACAAcAEAABAA4AAAADAAcAEAABAA4AAAAEAAcAEAABAA4AAAAFAAcAEAABAA4AAAAGAAcAEAABAA4AAAAHAAcAEAABAA4AAAAIAAcAEAABAA4AAAAJAAcAEAABAA4AAAAKAAcAEAABAA4AAAALAAcAEAABAA4AAAAMAAcAEAABAA4AAAANAAcAEAABAA4AAAAOAAcAEAABAA4AAAAPAAcAEAABAA4AAAAQAAcAEAABAA4AAAARAAcAEAABAA4AAAACAAIAEAABAA4AAAADAAIAEAABAA4AAAAEAAIAEAABAA4AAAAFAAIAEAABAA4AAAAGAAIAEAABAA4AAAAHAAIAEAABAA4AAAAIAAIAEAABAA4AAAAJAAIAEAABAA4AAAAKAAIAEAABAA4AAAALAAIAEAABAA4AAAAMAAIAEAABAA4AAAANAAIAEAABAA4AAAAOAAIAEAABAA4AAAAPAAIAEAABAA4AAAAQAAIAEAABAA4AAAARAAIAEAABAA4AAAARAAMAEAABAA4AAAARAAQAEAABAA4AAAARAAUAEAABAA4AAAARAAYAEAABAA4AAAAGAAYAEAABAA4AAAAGAAUAEAABAA4AAAAGAAQAEAABAA4AAAAGAAMAEAABAA4AAAAFAAMAEAABAA4AAAAEAAMAEAABAA4AAAAEAAQAEAABAA4AAAADAAQAEAABAA4AAAACAAQAEAABAA4AAAABAAQAEAABAA4AAAABAAUAEAABAA4AAAABAAYAEAABAA4AAAACAAYAEAABAA4AAAACAAUAEAABAA4AAAADAAUAEAABAA4AAAADAAYAEAABAA4AAAAEAAYAEAABAA4AAAAEAAUAEAABAA4AAAAFAAUAEAABAA4AAAAFAAQAEAABAA4AAAAFAAYAEAABAA4AAAAHAAMAEAABAA4AAAAHAAQAEAABAA4AAAAHAAUAEAABAA4AAAAHAAYAEAABAA4AAAAIAAYAEAABAA4AAAAIAAUAEAABAA4AAAAIAAQAEAABAA4AAAAIAAMAEAABAA4AAAAJAAMAEAABAA4AAAAJAAQAEAABAA4AAAAJAAUAEAABAA4AAAAJAAYAEAABAA4AAAAKAAYAEAABAA4AAAAKAAUAEAABAA4AAAAKAAQAEAABAA4AAAAKAAMAEAABAA4AAAALAAMAEAABAA4AAAALAAQAEAABAA4AAAALAAUAEAABAA4AAAALAAYAEAABAA4AAAAMAAYAEAABAA4AAAAMAAUAEAABAA4AAAAMAAQAEAABAA4AAAAMAAMAEAABAA4AAAANAAMAEAABAA4AAAANAAQAEAABAA4AAAANAAUAEAABAA4AAAANAAYAEAABAA4AAAAOAAYAEAABAA4AAAAOAAUAEAABAA4AAAAOAAQAEAABAA4AAAAOAAMAEAABAA4AAAAPAAMAEAABAA4AAAAPAAQAEAABAA4AAAAPAAUAEAABAA4AAAAPAAYAEAABAA4AAAAQAAYAEAABAA4AAAAQAAUAEAABAA4AAAAQAAQAEAABAA4AAAAQAAMAEAABAA4AAAASAAIAEAABAA4AAAASAAMAEAABAA4AAAASAAQAEAABAA4AAAASAAUAEAABAA4AAAASAAYAEAABAA4AAAASAAcAEAABAA4AAAATAAIAEAABAA4AAAATAAMAEAABAA4AAAATAAQAEAABAA4AAAATAAUAEAABAA4AAAATAAYAEAABAA4AAAATAAcAEAABAA4AAAAUAAIAEAABAA4AAAAUAAMAEAABAA4AAAAUAAQAEAABAA4AAAAUAAUAEAABAA4AAAAUAAYAEAABAA4AAAAUAAcAEAABAA4AAAAVAAIAEAABAA4AAAAVAAMAEAABAA4AAAAVAAQAEAABAA4AAAAVAAUAEAABAA4AAAAVAAYAEAABAA4AAAAVAAcAEAABAA4AAAAWAAIAEAABAA4AAAAWAAMAEAABAA4AAAAWAAQAEAABAA4AAAAWAAUAEAABAA4AAAAWAAYAEAABAA4AAAAWAAcAEAABAA4AAAAXAAIAEAABAA4AAAAXAAMAEAABAA4AAAAXAAQAEAABAA4AAAAXAAUAEAABAA4AAAAXAAYAEAABAA4AAAAXAAcAEAABAA4AAAAYAAIAEAABAA4AAAAYAAMAEAABAA4AAAAYAAQAEAABAA4AAAAYAAUAEAABAA4AAAAYAAYAEAABAA4AAAAYAAcAEAABAA4AAAAZAAIAEAABAA4AAAAZAAMAEAABAA4AAAAZAAQAEAABAA4AAAAZAAUAEAABAA4AAAAZAAYAEAABAA4AAAAZAAcAEAABAA4AAAAaAAIAEAABAA4AAAAaAAMAEAABAA4AAAAaAAQAEAABAA4AAAAaAAUAEAABAA4AAAAaAAYAEAABAA4AAAAaAAcAEAABAA4AAAAbAAIAEAABAA4AAAAbAAMAEAABAA4AAAAbAAQAEAABAA4AAAAbAAUAEAABAA4AAAAbAAYAEAABAA4AAAAbAAcAEAABAA4AAAAcAAIAEAABAA4AAAAcAAMAEAABAA4AAAAcAAQAEAABAA4AAAAcAAUAEAABAA4AAAAcAAYAEAABAA4AAAAcAAcAEAABAA4AAAAdAAIAEAABAA4AAAAdAAMAEAABAA4AAAAdAAQAEAABAA4AAAAdAAUAEAABAA4AAAAdAAYAEAABAA4AAAAdAAcAEAABAA4AAAAeAAIAEAABAA4AAAAeAAMAEAABAA4AAAAeAAQAEAABAA4AAAAeAAUAEAABAA4AAAAeAAYAEAABAA4AAAAeAAcAEAABAA4AAAAfAAIAEAABAA4AAAAfAAMAEAABAA4AAAAfAAQAEAABAA4AAAAfAAUAEAABAA4AAAAfAAYAEAABAA4AAAAfAAcAEAABAA4AAAAgAAIAEAABAA4AAAAgAAMAEAABAA4AAAAgAAQAEAABAA4AAAAgAAUAEAABAA4AAAAgAAYAEAABAA4AAAAgAAcAEAABAA4AAAAhAAIAEAABAA4AAAAhAAMAEAABAA4AAAAhAAQAEAABAA4AAAAhAAUAEAABAA4AAAAhAAYAEAABAA4AAAAhAAcAEAABAA4AAAAiAAIAEAABAA4AAAAiAAMAEAABAA4AAAAiAAQAEAABAA4AAAAiAAUAEAABAA4AAAAiAAYAEAABAA4AAAAiAAcAEAABAA4AAAAjAAIAEAABAA4AAAAjAAMAEAABAA4AAAAjAAQAEAABAA4AAAAjAAUAEAABAA4AAAAjAAYAEAABAA4AAAAjAAcAEAABAA4AAAAkAAIAEAABAA4AAAAkAAMAEAABAA4AAAAkAAQAEAABAA4AAAAkAAUAEAABAA4AAAAkAAYAEAABAA4AAAAkAAcAEAABAA4AAAAlAAIAEAABAA4AAAAlAAMAEAABAA4AAAAlAAQAEAABAA4AAAAlAAUAEAABAA4AAAAlAAYAEAABAA4AAAAlAAcAEAABAA4AAAAmAAIAEAABAA4AAAAmAAMAEAABAA4AAAAmAAQAEAABAA4AAAAmAAUAEAABAA4AAAAmAAYAEAABAA4AAAAmAAcAEAABAA4AAAAnAAIAEAABAA4AAAAnAAMAEAABAA4AAAAnAAQAEAABAA4AAAAnAAUAEAABAA4AAAAnAAYAEAABAA4AAAAnAAcAEAABAA4AAAAoAAIAEAABAA4AAAAoAAMAEAABAA4AAAAoAAQAEAABAA4AAAAoAAUAEAABAA4AAAAoAAYAEAABAA4AAAAoAAcAEAABAA4AAAApAAIAEAABAA4AAAApAAMAEAABAA4AAAApAAQAEAABAA4AAAApAAUAEAABAA4AAAApAAYAEAABAA4AAAApAAcAEAABAA4AAAAqAAIAEAABAA4AAAAqAAMAEAABAA4AAAAqAAQAEAABAA4AAAAqAAUAEAABAA4AAAAqAAYAEAABAA4AAAAqAAcAEAABAA4AAAArAAIAEAABAA4AAAArAAMAEAABAA4AAAArAAQAEAABAA4AAAArAAUAEAABAA4AAAArAAYAEAABAA4AAAArAAcAEAABAA4AAAAsAAIAEAABAA4AAAAsAAMAEAABAA4AAAAsAAQAEAABAA4AAAAsAAUAEAABAA4AAAAsAAYAEAABAA4AAAAsAAcAEAABAA4AAAAtAAIAEAABAA4AAAAtAAMAEAABAA4AAAAtAAQAEAABAA4AAAAtAAUAEAABAA4AAAAtAAYAEAABAA4AAAAtAAcAEAABAA4AAAAuAAIAEAABAA4AAAAuAAMAEAABAA4AAAAuAAQAEAABAA4AAAAuAAUAEAABAA4AAAAuAAYAEAABAA4AAAAuAAcAEAABAA4AAAAvAAIAEAABAA4AAAAvAAMAEAABAA4AAAAvAAQAEAABAA4AAAAvAAUAEAABAA4AAAAvAAYAEAABAA4AAAAvAAcAEAABAA4AAAAwAAIAEAABAA4AAAAwAAMAEAABAA4AAAAwAAQAEAABAA4AAAAwAAUAEAABAA4AAAAwAAYAEAABAA4AAAAwAAcAEAABAA4AAAAxAAIAEAABAA4AAAAxAAMAEAABAA4AAAAxAAQAEAABAA4AAAAxAAUAEAABAA4AAAAxAAYAEAABAA4AAAAxAAcAEAABAA4AAAAyAAIAEAABAA4AAAAyAAMAEAABAA4AAAAyAAQAEAABAA4AAAAyAAUAEAABAA4AAAAyAAYAEAABAA4AAAAyAAcAEAABAA4AAAAzAAIAEAABAA4AAAAzAAMAEAABAA4AAAAzAAQAEAABAA4AAAAzAAUAEAABAA4AAAAzAAYAEAABAA4AAAAzAAcAEAABAA4AAAA0AAIAEAABAA4AAAA0AAMAEAABAA4AAAA0AAQAEAABAA4AAAA0AAUAEAABAA4AAAA0AAYAEAABAA4AAAA0AAcAEAABAA4AAAA1AAIAEAABAA4AAAA1AAMAEAABAA4AAAA1AAQAEAABAA4AAAA1AAUAEAABAA4AAAA1AAYAEAABAA4AAAA1AAcAEAABAA4AAAAaAAgAEAABAA4AAAAbAAgAEAABAA4AAAAcAAgAEAABAA4AAAAcAAkAEAABAA4AAAAbAAoAEAABAA4AAAAbAAkAEAABAA4AAAAaAAkAEAABAA4AAAAaAAoAEAABAA4AAAAcAAoAEAABAA4AAAAoAAgAEAABAA4AAAApAAgAEAABAA4AAAAqAAgAEAABAA4AAAArAAgAEAABAA4AAAAsAAgAEAABAA4AAAAtAAgAEAABAA4AAAAuAAgAEAABAA4AAAAvAAgAEAABAA4AAAAwAAgAEAABAA4AAAAxAAgAEAABAA4AAAAxAAkAEAABAA4AAAAxAAoAEAABAA4AAAAwAAoAEAABAA4AAAAvAAoAEAABAA4AAAAuAAoAEAABAA4AAAAtAAoAEAABAA4AAAAsAAoAEAABAA4AAAArAAoAEAABAA4AAAAqAAoAEAABAA4AAAApAAoAEAABAA4AAAAoAAoAEAABAA4AAAAoAAkAEAABAA4AAAApAAkAEAABAA4AAAAqAAkAEAABAA4AAAArAAkAEAABAA4AAAAsAAkAEAABAA4AAAAtAAkAEAABAA4AAAAuAAkAEAABAA4AAAAvAAkAEAABAA4AAAAwAAkAEAABAA4AAAA=")
+tile_set = SubResource("TileSet_b61a7")
+collision_enabled = false
 
-[node name="Sprite2D" type="Sprite2D" parent="PisoT2_1"]
-position = Vector2(71, -4.00003)
-scale = Vector2(6.84375, 2.25)
-texture = SubResource("GradientTexture2D_pbop1")
+[node name="Nivel2" type="TileMapLayer" parent="Tilemaps"]
+rotation = -3.14159
+tile_map_data = PackedByteArray("AAAAAP7/EAAHAA0AAAD///7/EAAHAA8AAAD+//7/EAAHAA8AAAD9//7/EAAHAA8AAAD8//7/EAAHAA8AAAD7//7/EAAHAA8AAAD6//7/EAAHAA8AAAD5//7/EAAHAA8AAAD4//7/EAAHAA8AAAD3//7/EAAHAA8AAAD2//7/EAAHAA8AAAD1//7/EAAHAA8AAAD0//7/EAAHAA8AAADz//7/EAAHAA8AAADy//7/EAAHAA8AAADx//7/EAAHAA8AAADw//7/EAAHAA8AAADv//7/EAAHAA8AAAAAAP//EAAIAAIAABD/////EAAIAAMAAAD+////EAAIAAMAAAD9////EAAIAAMAAAD8////EAAIAAMAAAD7////EAAIAAMAAAD6////EAAIAAMAAAD5////EAAIAAMAAAD4////EAAIAAMAAAD3////EAAIAAMAAAD2////EAAIAAMAAAD1////EAAIAAMAAAD0////EAAIAAMAAADz////EAAIAAMAAADy////EAAIAAMAAADx////EAAIAAMAAADw////EAAIAAMAAADv////EAAIAAMAAAD+//z/EAAAAAcAACDv//z/EAAAAAcAACDu//7/EAAHAA8AAADt//7/EAAHAA8AAADs//7/EAAHAA8AAADr//7/EAAHAA8AAADq//7/EAAHAA8AAADp//7/EAAHAA8AAADo//7/EAAHAA8AAADn//7/EAAHAA8AAADm//7/EAAHAA8AAADl//7/EAAHAA8AAADk//7/EAAHAA8AAADj//7/EAAHAA8AAADi//7/EAAHAA8AAADh//7/EAAHAA8AAADg//7/EAAHAA8AAADf//7/EAAHAA8AAADe//7/EAAHAA8AAADd//7/EAAHAA8AAADc//7/EAAHAA8AAADb//7/EAAHAA8AAADa//7/EAAHAA8AAADZ//7/EAAHAA8AAADY//7/EAAHAA8AAADX//7/EAAHAA8AAADW//7/EAAHAA8AAADV//7/EAAHAA8AAADU//7/EAAHAA8AAADT//7/EAAHAA8AAADS//7/EAAHAA8AAADR//7/EAAHAA8AAADQ//7/EAAHAA8AAADP//7/EAAHAA8AAADO//7/EAAHAA8AAADN//7/EAAHAA8AAADM//7/EAAHAA8AAADL//7/EAAHAA8AAADK//7/EAAHAA8AAADJ//7/EAAHAA0AABDu////EAAIAAMAAADt////EAAIAAMAAADs////EAAIAAMAAADr////EAAIAAMAAADq////EAAIAAMAAADp////EAAIAAMAAADo////EAAIAAMAAADn////EAAIAAMAAADm////EAAIAAMAAADl////EAAIAAMAAADk////EAAIAAMAAADj////EAAIAAMAAADi////EAAIAAMAAADh////EAAIAAMAAADg////EAAIAAMAAADf////EAAIAAMAAADe////EAAIAAMAAADd////EAAIAAMAAADc////EAAIAAMAAADb////EAAIAAMAAADa////EAAIAAMAAADZ////EAAIAAMAAADY////EAAIAAMAAADX////EAAIAAMAAADW////EAAIAAMAAADV////EAAIAAMAAADU////EAAIAAMAAADT////EAAIAAMAAADS////EAAIAAMAAADR////EAAIAAMAAADQ////EAAIAAMAAADP////EAAIAAMAAADO////EAAIAAMAAADN////EAAIAAMAAADM////EAAIAAMAAADL////EAAIAAMAAADK////EAAIAAMAAADJ////EAAIAAIAAAA=")
+tile_set = SubResource("TileSet_b61a7")
 
-[node name="PistoT2" type="StaticBody2D" parent="."]
-position = Vector2(2065, 578)
+[node name="Nivel" type="TileMapLayer" parent="Tilemaps"]
+position = Vector2(0, 1)
+tile_map_data = PackedByteArray("AAAQAAgAEAAHAA8AAAAPAAgAEAAHAA8AAAAOAAgAEAAHAA8AAAANAAgAEAAHAA8AAAAMAAgAEAAHAA8AAAALAAgAEAAHAA8AAAAKAAgAEAAHAA8AAAAJAAgAEAAHAA8AAAAIAAgAEAAHAA8AAAAHAAgAEAAHAA8AAAAGAAgAEAAHAA8AAAAFAAgAEAAHAA8AAAAEAAgAEAAHAA8AAAABAAgAEAAHAA8AAAACAAgAEAAHAA8AAAADAAgAEAAHAA8AAAAQAAkAEAAIAAAAAAAPAAkAEAAIAAAAAAAOAAkAEAAIAAAAAAANAAkAEAAIAAAAAAAMAAkAEAAIAAAAAAALAAkAEAAIAAAAAAAKAAkAEAAIAAAAAAAJAAkAEAAIAAAAAAAIAAkAEAAIAAAAAAAHAAkAEAAIAAAAAAAGAAkAEAAIAAAAAAAFAAkAEAAIAAAAAAAEAAkAEAAIAAAAAAADAAkAEAAIAAAAAAACAAkAEAAIAAAAAAABAAkAEAAIAAAAAAABAAoAEAAIAAMAAAACAAoAEAAIAAMAAAADAAoAEAAIAAMAAAAEAAoAEAAIAAMAAAAFAAoAEAAIAAMAAAAGAAoAEAAIAAMAAAAHAAoAEAAIAAMAAAAIAAoAEAAIAAMAAAAJAAoAEAAIAAMAAAAKAAoAEAAIAAMAAAALAAoAEAAIAAMAAAAMAAoAEAAIAAMAAAANAAoAEAAIAAMAAAAOAAoAEAAIAAMAAAAPAAoAEAAIAAMAAAAQAAoAEAAIAAMAAAAAAAgAEAAHAA4AAAAAAAkAEAAHABAAABAAAAoAEAAIAAIAAAD//wgAEAAHAA8AAFD//wcAEAAHAA8AAFD//wYAEAAHAA8AAFD//wUAEAAHAA8AAFD//wQAEAAHAA8AAFD//wMAEAAHAA8AAFD//wIAEAAHAA8AAFAQAAcAEAAKAAoAAAAiAAcAEAAKAAoAAAARAAgAEAAHAA8AAAASAAgAEAAHAA8AAAATAAgAEAAHAA8AAAAUAAgAEAAHAA8AAAAVAAgAEAAHAA8AAAAWAAgAEAAHAA8AAAAXAAgAEAAHAA8AAAAYAAgAEAAHAA8AAAAZAAgAEAAHAA4AABAZAAkAEAAHABAAAAAYAAkAEAAIAAAAAAAXAAkAEAAIAAAAAAAWAAkAEAAIAAAAAAAVAAkAEAAIAAAAAAAUAAkAEAAIAAAAAAATAAkAEAAIAAAAAAASAAkAEAAIAAAAAAARAAkAEAAIAAAAAAARAAoAEAAIAAMAAAASAAoAEAAIAAMAAAATAAoAEAAIAAMAAAAUAAoAEAAIAAMAAAAVAAoAEAAIAAMAAAAWAAoAEAAIAAMAAAAXAAoAEAAIAAMAAAAYAAoAEAAIAAMAAAAZAAoAEAAIAAIAABAdAAoAEAAIAAIAAAAdAAkAEAAHABAAABAdAAgAEAAHAA4AAAAeAAgAEAAHAA8AAAAfAAgAEAAHAA8AAAAgAAgAEAAHAA8AAAAhAAgAEAAHAA8AAAAiAAgAEAAHAA8AAAAjAAgAEAAHAA8AAAAeAAoAEAAIAAMAAAAfAAoAEAAIAAMAAAAgAAoAEAAIAAMAAAAhAAoAEAAIAAMAAAAiAAoAEAAIAAMAAAAjAAoAEAAIAAMAAAAkAAoAEAAIAAMAAAAlAAoAEAAIAAMAAAAmAAoAEAAIAAMAAAAnAAoAEAAIAAIAABAyAAoAEAAIAAIAAAAzAAoAEAAIAAMAAAA0AAoAEAAIAAMAAAA1AAoAEAAIAAMAAAAkAAgAEAAHAA8AAAAlAAgAEAAHAA8AAAAmAAgAEAAHAA8AAAAeAAkAEAAIAAAAAAAfAAkAEAAIAAAAAAAgAAkAEAAIAAAAAAAhAAkAEAAIAAAAAAAiAAkAEAAIAAAAAAAjAAkAEAAIAAAAAAAkAAkAEAAIAAAAAAAlAAkAEAAIAAAAAAAmAAkAEAAIAAAAAAAnAAgAEAAHAA4AABAnAAkAEAAHABAAAAA2AAkAEAAHABAAAAA2AAgAEAAHAA4AABA2AAoAEAAIAAIAABAyAAgAEAAHAA4AAAAyAAkAEAAHABAAABAzAAgAEAAHAA8AAAA0AAgAEAAHAA8AAAA1AAgAEAAHAA8AAAAzAAkAEAAIAAAAAAA0AAkAEAAIAAAAAAA1AAkAEAAIAAAAAAATAAMAEAAAAAcAAAAiAAMAEAAAAAcAAAAmAAMAEAAAAAcAAAA0AAMAEAAAAAcAAAA0AAcAEAAKAAwAAAA=")
+tile_set = SubResource("TileSet_b61a7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PistoT2"]
-position = Vector2(12.75, -2.5)
-shape = SubResource("RectangleShape2D_yktgn")
-
-[node name="Sprite2D" type="Sprite2D" parent="PistoT2"]
-position = Vector2(15.5, -1.00003)
-scale = Vector2(7.07813, 2.25)
-texture = SubResource("GradientTexture2D_pbop1")
-
-[node name="TechoT2" type="StaticBody2D" parent="."]
-position = Vector2(1325, 72)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TechoT2"]
-position = Vector2(404, 1)
-shape = SubResource("RectangleShape2D_l52h3")
-
-[node name="Sprite2D" type="Sprite2D" parent="TechoT2"]
-position = Vector2(406, -0.999999)
-scale = Vector2(18.1094, 2.21875)
-texture = SubResource("GradientTexture2D_b61a7")
-
-[node name="PisoT3" type="StaticBody2D" parent="."]
-position = Vector2(2397, 589)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT3"]
-position = Vector2(27.5, -12)
-shape = SubResource("RectangleShape2D_77138")
-
-[node name="Sprite2D" type="Sprite2D" parent="PisoT3"]
-position = Vector2(27, -11.2499)
-scale = Vector2(3.656, 2.25)
-texture = SubResource("GradientTexture2D_fqf3n")
-
-[node name="PisoT3_1" type="StaticBody2D" parent="."]
-position = Vector2(3371, 592)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PisoT3_1"]
-position = Vector2(-32, -16)
-shape = SubResource("RectangleShape2D_pbop1")
-
-[node name="Sprite2D" type="Sprite2D" parent="PisoT3_1"]
-position = Vector2(-31, -16.5)
-scale = Vector2(3.6875, 2.29687)
-texture = SubResource("GradientTexture2D_83sip")
+[node name="Objetos" type="TileMapLayer" parent="Tilemaps"]
+tile_set = SubResource("TileSet_b61a7")
 
 [node name="PlataformaVoladora2" type="AnimatableBody2D" parent="."]
 position = Vector2(2959, 426)
@@ -300,7 +188,7 @@ shape = SubResource("RectangleShape2D_b61a7")
 [node name="Sprite2D" type="Sprite2D" parent="PlataformaVoladora2"]
 position = Vector2(-0.999931, 1.49998)
 scale = Vector2(2.34375, 0.546875)
-texture = SubResource("GradientTexture2D_kbase")
+texture = SubResource("GradientTexture2D_b61a7")
 
 [node name="PlataformaVoladora1" type="AnimatableBody2D" parent="."]
 position = Vector2(2690, 439)
@@ -313,10 +201,7 @@ shape = SubResource("RectangleShape2D_10qo4")
 [node name="Sprite2D" type="Sprite2D" parent="PlataformaVoladora1"]
 position = Vector2(-6.99999, -1.00001)
 scale = Vector2(2.3125, 0.531249)
-texture = SubResource("GradientTexture2D_7u5yi")
-
-[node name="Player" parent="." instance=ExtResource("1_yktgn")]
-position = Vector2(536, 387)
+texture = SubResource("GradientTexture2D_83sip")
 
 [node name="FinalDeNivel1" type="Area2D" parent="."]
 position = Vector2(3349, 387)
