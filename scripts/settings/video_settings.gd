@@ -75,6 +75,7 @@ func _on_fullscreen_check_box_toggled(toggled_on):
 	
 	SaveManager.settings.fullscreen = toggled_on
 	SaveManager.save_settings()
+	load_video_settings()
 
 func add_vsync():
 	for r in GUI.vsync_modes:

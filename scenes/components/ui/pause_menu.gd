@@ -17,7 +17,7 @@ func _on_settings_button_pressed() -> void:
 	
 	if settings_menu.visible:
 		#print("se debería haber abierto el menú de ajustes")
-		settings_menu.update_button_values()
+		settings_menu.VideoSettings.update_resolution_button_values()
 
 
 func _on_quit_button_pressed() -> void:
