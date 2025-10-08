@@ -1,59 +1,84 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfnbnypf5r2o3"]
+[gd_scene load_steps=14 format=3 uid="uid://dfnbnypf5r2o3"]
 
 [ext_resource type="Script" uid="uid://e3ilg2mrx5nb" path="res://scripts/character/player/player.gd" id="1_i02fc"]
+[ext_resource type="Texture2D" uid="uid://0wapga7gt4sa" path="res://assets/jugador/corriendo.png" id="2_wgm7s"]
 [ext_resource type="Script" uid="uid://bsrkyetikg3hy" path="res://scripts/FSM/maquina_estado.gd" id="3_kyenk"]
-[ext_resource type="Texture2D" uid="uid://brnqvbmq55ouq" path="res://assets/mario-sprite-super-mario-bros-1-mario-1156289219229b0n5zjzl.png" id="3_wgm7s"]
+[ext_resource type="Texture2D" uid="uid://bggvarhgvfd16" path="res://assets/jugador/corriendo2.png" id="3_vwski"]
 [ext_resource type="Script" uid="uid://dwdmsjgp1skg5" path="res://scripts/character/player/estados/quieto.gd" id="4_wgm7s"]
 [ext_resource type="Script" uid="uid://blj3o2s5jvx51" path="res://scripts/character/player/estados/caminando.gd" id="5_vwski"]
 [ext_resource type="Script" uid="uid://dsvuuho4csgqt" path="res://scripts/character/player/estados/saltando.gd" id="6_ck0bj"]
 [ext_resource type="Script" uid="uid://ssqgmp5okh8h" path="res://scripts/character/player/estados/cayendo.gd" id="7_hcrmk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2oloj"]
-size = Vector2(44, 45)
+size = Vector2(17, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kyenk"]
-atlas = ExtResource("3_wgm7s")
-region = Rect2(0, 0, 840, 859)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck0bj"]
+atlas = ExtResource("2_wgm7s")
+region = Rect2(0, 0, 103, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwski"]
-atlas = ExtResource("3_wgm7s")
-region = Rect2(0, 0, 840, 859)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcrmk"]
+atlas = ExtResource("2_wgm7s")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvarx"]
+atlas = ExtResource("3_vwski")
+region = Rect2(85, 0, 85, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ck0bj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kyenk")
+"texture": SubResource("AtlasTexture_ck0bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vwski")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcrmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vwski")
 }],
 "loop": true,
-"name": &"caminar",
+"name": &"caminando",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck0bj")
+}],
 "loop": true,
 "name": &"cayendo",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vwski")
+"texture": SubResource("AtlasTexture_gvarx")
 }],
 "loop": true,
 "name": &"quieto",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcrmk")
+}],
+"loop": true,
+"name": &"saltando",
+"speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["jugador"]]
 script = ExtResource("1_i02fc")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.5)
+position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_2oloj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4.54747e-13, -3)
-scale = Vector2(0.0523809, 0.0523809)
+position = Vector2(1, -5)
+scale = Vector2(0.19, 0.19)
 sprite_frames = SubResource("SpriteFrames_ck0bj")
 animation = &"cayendo"
 

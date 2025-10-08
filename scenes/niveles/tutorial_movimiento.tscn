@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=41 format=3 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://cury1qnerll5m" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
 [ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="3_77138"]
 [ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="3_l52h3"]
+[ext_resource type="Script" uid="uid://bko8po848s842" path="res://scenes/niveles/final_de_nivel_1.gd" id="3_pbop1"]
 
 [sub_resource type="Gradient" id="Gradient_ouyk1"]
 offsets = PackedFloat32Array(0)
@@ -108,7 +109,7 @@ colors = PackedColorArray(0.495401, 0.00183118, 0.721108, 1)
 gradient = SubResource("Gradient_83sip")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqf3n"]
-size = Vector2(23, 370)
+size = Vector2(39, 370)
 
 [sub_resource type="Animation" id="Animation_77138"]
 resource_name = "MovimientoPlataformas"
@@ -172,9 +173,15 @@ _data = {
 &"RESET": SubResource("Animation_pbop1")
 }
 
-[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83sip"]
+size = Vector2(1614, 51)
+
+[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara", "area_next_level", "death_zone", "Respawn")]
 script = ExtResource("1_ujkkx")
 camara = NodePath("Camera2D")
+area_next_level = NodePath("FinalDeNivel1")
+death_zone = NodePath("DeathZone")
+Respawn = NodePath("Respawns")
 
 [node name="FondoT1" type="Sprite2D" parent="."]
 position = Vector2(574, 324)
@@ -320,10 +327,11 @@ position = Vector2(536, 387)
 
 [node name="FinalDeNivel1" type="Area2D" parent="."]
 position = Vector2(3349, 387)
+script = ExtResource("3_pbop1")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinalDeNivel1"]
-position = Vector2(105.5, -64)
+position = Vector2(97.5, -64)
 shape = SubResource("RectangleShape2D_fqf3n")
 
 [node name="PasoDeNivel1" parent="." node_paths=PackedStringArray("camara") instance=ExtResource("3_77138")]
@@ -344,3 +352,23 @@ script = ExtResource("3_l52h3")
 libraries = {
 &"": SubResource("AnimationLibrary_10qo4")
 }
+
+[node name="Respawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Respawns"]
+position = Vector2(63, 456)
+
+[node name="Marker2D2" type="Marker2D" parent="Respawns"]
+position = Vector2(1268, 456)
+
+[node name="Marker2D3" type="Marker2D" parent="Respawns"]
+position = Vector2(2404, 456)
+
+[node name="DeathZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2438, 658.5)
+shape = SubResource("RectangleShape2D_83sip")
+debug_color = Color(0.996589, 0, 0.183735, 0.42)
+
+[connection signal="body_entered" from="FinalDeNivel1" to="." method="_on_final_de_nivel_1_body_entered"]

@@ -1,7 +1,7 @@
 extends Estado
 
 func enter():
-	pass
+	print(name)
 	jugador.sprite.play("cayendo")
 
 func physics_update(delta):
