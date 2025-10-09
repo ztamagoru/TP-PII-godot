@@ -13,11 +13,16 @@ func create_action_remap_items():
 		var action = action_items[index]
 		var label = Label.new()
 		
-		label.text = action
+		label.text = correct_input_name(action)
 		label.custom_minimum_size.y = 55.0
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		video_settings_labels.add_child(label)
 		
 		var button = RemapButton.new()
 		
 		button.action = action
+		button.custom_minimum_size.y = 55.0
 		video_settings.add_child(button)
+
+func correct_input_name(input_name : String):
+	return input_name.replace("_", " ")
