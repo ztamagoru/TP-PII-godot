@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=24 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="3_l52h3"]
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="5_pbop1"]
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="6_10qo4"]
+[ext_resource type="AudioStream" uid="uid://vwim1vuhvxqe" path="res://assets/sonidos/tema de fondo.mp3" id="7_b61a7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10qo4"]
 texture = ExtResource("5_pbop1")
@@ -253,3 +254,9 @@ position = Vector2(2404, 456)
 position = Vector2(2438, 694)
 shape = SubResource("RectangleShape2D_83sip")
 debug_color = Color(0.996589, 0, 0.183735, 0.42)
+
+[node name="Musica Fondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_b61a7")
+volume_db = -11.012
+autoplay = true
+bus = &"Music"
