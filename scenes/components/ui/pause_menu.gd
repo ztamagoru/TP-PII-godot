@@ -17,14 +17,14 @@ func _on_settings_button_pressed() -> void:
 	
 	if settings_menu.visible:
 		#print("se debería haber abierto el menú de ajustes")
-		settings_menu.update_button_values()
+		settings_menu.VideoSettings.update_resolution_button_values()
 
 
 func _on_quit_button_pressed() -> void:
 	var confirm_quit = get_node("/root/GUI/ConfirmQuit")
 	confirm_quit.visible = !confirm_quit.visible
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible:
 		return
 	

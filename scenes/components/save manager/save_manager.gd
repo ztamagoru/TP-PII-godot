@@ -29,7 +29,7 @@ func load_settings():
 
 func save_settings():
 	var settings_file = FileAccess.open(route_settings, FileAccess.WRITE)
-	print("guardando valores default")
+	print("guardando settings")
 	settings_file.store_line(JSON.stringify(settings, "\t"))
 
 func set_default_settings():
@@ -37,9 +37,9 @@ func set_default_settings():
 		"volume_master": 1.0,
 		"volume_music": 1.0,
 		"volume_sfx": 1.0,
-		"fullscreen": true,
-		"resolution": [1920, 1080],
+		"fullscreen": false,
+		"resolution": "1152, 648",
 		"language": "es",
-		"vsync": true,
+		"vsync": 0,
 		"brightness": 1.0
 	}

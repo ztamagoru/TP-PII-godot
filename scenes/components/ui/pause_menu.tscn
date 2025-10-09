@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://j6bdd8ibkkua"]
+[gd_scene load_steps=4 format=3 uid="uid://j6bdd8ibkkua"]
 
 [ext_resource type="Script" uid="uid://cdecm0ah6pyf6" path="res://scenes/components/ui/pause_menu.gd" id="1_2rv0d"]
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_oejxc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oejxc"]
 bg_color = Color(0, 0, 0, 0.235294)
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_oejxc")
 script = ExtResource("1_2rv0d")
 
 [node name="Panel" type="Panel" parent="."]
@@ -21,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_oejxc")
 theme_override_styles/panel = SubResource("StyleBoxFlat_oejxc")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -30,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_oejxc")
 theme_override_constants/margin_left = 150
 theme_override_constants/margin_bottom = 150
 
@@ -37,18 +41,22 @@ theme_override_constants/margin_bottom = 150
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme = ExtResource("1_oejxc")
 theme_override_constants/separation = 10
 
 [node name="ReanudarButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_oejxc")
 text = "Reanudar"
 
 [node name="SettingsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_oejxc")
 text = "Ajustes"
 
 [node name="QuitButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_oejxc")
 text = "Salir"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

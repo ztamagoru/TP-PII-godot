@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvydgd76uqlwq"]
+[gd_scene load_steps=6 format=3 uid="uid://cvydgd76uqlwq"]
 
 [ext_resource type="Script" uid="uid://c70fnt14itauu" path="res://scenes/components/ui/settings_menu.gd" id="1_3jrsw"]
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_8bpd0"]
+[ext_resource type="Script" uid="uid://chsydfqx38tbg" path="res://scripts/settings/audio_settings.gd" id="2_y1lay"]
+[ext_resource type="Script" uid="uid://bnnpkkn85hoiw" path="res://scripts/settings/video_settings.gd" id="3_8bpd0"]
+[ext_resource type="Script" uid="uid://cgfiowvquiwgr" path="res://scripts/settings/control_settings.gd" id="4_s0p4e"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8bpd0")
 script = ExtResource("1_3jrsw")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -19,6 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme = ExtResource("1_8bpd0")
 theme_override_constants/margin_left = 75
 theme_override_constants/margin_top = 75
 theme_override_constants/margin_right = 75
@@ -26,44 +32,179 @@ theme_override_constants/margin_bottom = 75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
 theme_override_constants/separation = 0
 
 [node name="CloseSettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme = ExtResource("1_8bpd0")
 text = "Close"
 alignment = 2
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 2
+theme = ExtResource("1_8bpd0")
+current_tab = 1
+tab_focus_mode = 0
 
 [node name="Audio" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
+script = ExtResource("2_y1lay")
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("1_8bpd0")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = -805
+
+[node name="AudioSettingsLabels" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = 15
+
+[node name="MasterVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabels"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = "Master Volume"
+vertical_alignment = 1
+
+[node name="MusicVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabels"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = "Música"
+vertical_alignment = 1
+
+[node name="SFXVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabels"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = "SFX"
+vertical_alignment = 1
+
+[node name="AudioSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = 15
+
+[node name="MasterVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+max_value = 10.0
+value = 10.0
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+max_value = 10.0
+value = 10.0
+
+[node name="SFXVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+max_value = 10.0
+value = 10.0
+
+[node name="AudioSettingsLabel2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = 15
+
+[node name="CurrentMasterVolume" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabel2"]
+custom_minimum_size = Vector2(25, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = "10"
+
+[node name="CurrentMusicVolume" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabel2"]
+custom_minimum_size = Vector2(25, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = "10"
+
+[node name="CurrentSFXVolume" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettingsLabel2"]
+custom_minimum_size = Vector2(25, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = "10"
 
 [node name="Controles" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
+script = ExtResource("4_s0p4e")
+action_items = Array[String](["mover_izquierda", "mover_derecha", "salto"])
 metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controles"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = 50
+
+[node name="VideoSettingsLabels" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = 15
+
+[node name="VideoSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_8bpd0")
+theme_override_constants/separation = 15
+alignment = 2
 
 [node name="Video" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
 theme_override_constants/separation = 270
+script = ExtResource("3_8bpd0")
 metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video"]
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -71,35 +212,104 @@ theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
 theme_override_constants/separation = 50
 
 [node name="VideoSettingsLabels" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_8bpd0")
 theme_override_constants/separation = 15
 
 [node name="ResolutionLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettingsLabels"]
+custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("1_8bpd0")
 text = "Resolución"
+vertical_alignment = 1
 
 [node name="FullscreenLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettingsLabels"]
+custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("1_8bpd0")
 text = "Pantalla completa"
+vertical_alignment = 1
+
+[node name="VsyncLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettingsLabels"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_8bpd0")
+text = "Vsync"
+vertical_alignment = 1
+
+[node name="FPSLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettingsLabels"]
+visible = false
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_8bpd0")
+text = "FPS"
+vertical_alignment = 1
 
 [node name="VideoSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_8bpd0")
 theme_override_constants/separation = 15
 alignment = 2
 
 [node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings"]
+custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
 
 [node name="FullscreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings"]
+custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
+theme = ExtResource("1_8bpd0")
+
+[node name="VsyncOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings"]
+visible = false
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_8bpd0")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = "<"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_8bpd0")
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = ExtResource("1_8bpd0")
+text = ">"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/MasterVolumeSlider" to="MarginContainer/VBoxContainer/TabContainer/Audio" method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/MusicVolumeSlider" to="MarginContainer/VBoxContainer/TabContainer/Audio" method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer/AudioSettings/SFXVolumeSlider" to="MarginContainer/VBoxContainer/TabContainer/Audio" method="_on_sfx_volume_slider_value_changed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/ResolutionOptionButton" to="MarginContainer/VBoxContainer/TabContainer/Video" method="_on_resolution_option_button_item_selected"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/FullscreenCheckBox" to="MarginContainer/VBoxContainer/TabContainer/Video" method="_on_fullscreen_check_box_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/TabContainer/Video/MarginContainer/HBoxContainer/VideoSettings/VsyncOptionButton" to="MarginContainer/VBoxContainer/TabContainer/Video" method="_on_vsync_option_button_item_selected"]
