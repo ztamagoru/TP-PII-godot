@@ -20,9 +20,6 @@ func _ready():
 	Globales.current_level = self
 	$Movimiento_plataformas.play("MovimientoPlataformas")
 
-func _process(_delta):
-	pass
-
 func _physics_process(_delta):
 	for body in death_zone.get_overlapping_bodies():
 		if body.is_in_group("jugador"):
@@ -31,8 +28,8 @@ func _physics_process(_delta):
 	
 	for body in area_next_level.get_overlapping_bodies():
 		if body.is_in_group("jugador"):
-			print("next level")
-			#get_tree().change_scene_to_packed(next_level)
+			#print("next level")
+			get_tree().change_scene_to_packed(next_level)
 
 func get_next_respawn():
 	zonas_respawn.pop_front()
