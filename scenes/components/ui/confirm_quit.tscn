@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://tyrp2617h2ly"]
+[gd_scene load_steps=5 format=3 uid="uid://tyrp2617h2ly"]
 
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_fjwjn"]
 [ext_resource type="Script" uid="uid://0tv6joklq8u" path="res://scenes/components/ui/confirm_quit.gd" id="1_oc24q"]
 [ext_resource type="PackedScene" uid="uid://svu0lyyb4fws" path="res://scenes/MainMenu.tscn" id="2_my2as"]
 
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fjwjn")
 script = ExtResource("1_oc24q")
 main_menu = ExtResource("2_my2as")
 
@@ -23,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fjwjn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pjx3g")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -32,14 +35,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 200
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 200
+theme = ExtResource("1_fjwjn")
 
 [node name="Panel" type="Panel" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(700, 200)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pjx3g")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_fjwjn")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Panel"]
 layout_mode = 1
@@ -48,6 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fjwjn")
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
@@ -57,28 +61,35 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_fjwjn")
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_fjwjn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "¿Seguro que quieres salir?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_fjwjn")
 theme_override_constants/separation = 10
 
 [node name="QuitDesktopButton" type="Button" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_fjwjn")
 text = "Salir al escritorio"
 
 [node name="QuitMenuButton" type="Button" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_fjwjn")
 text = "Salir al menú"
 
 [node name="CancelButton" type="Button" parent="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_fjwjn")
 text = "Cancelar"
 
 [connection signal="pressed" from="Panel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/QuitDesktopButton" to="." method="_on_quit_desktop_button_pressed"]
