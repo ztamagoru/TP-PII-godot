@@ -5,6 +5,8 @@ class_name RemapButton
 
 static var active_remap_button : RemapButton = null
 
+signal key_changed(action_name : String, physical_keycode : int)
+
 func _init():
 	toggle_mode = true
 	#theme_type_variation = "RemapButton"
@@ -51,6 +53,8 @@ func _unhandled_input(event : InputEvent):
 				
 				InputMap.action_erase_events(action)
 				InputMap.action_add_event(action, new_event)
+				
+				emit_signal("key_changed", action, key_physical)
 		
 		button_pressed = false
 
