@@ -1,7 +1,10 @@
 extends Estado
 
+@export var audioplayer : AudioStreamPlayer
+
 func enter():
 	print(name)
+	audioplayer.play(0)
 	jugador.sprite.play("saltando")
 	jugador.velocity.y = -jugador.impulso_salto
 	
