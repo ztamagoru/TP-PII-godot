@@ -8,7 +8,7 @@ size = Vector2(23, 370)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83sip"]
 size = Vector2(545, 568)
 
-[node name="PasoDeNivel1" type="Area2D" node_paths=PackedStringArray("pared_de_seguridad")]
+[node name="PasoDeNivel1" type="Area2D" node_paths=PackedStringArray("pared_de_seguridad") groups=["paso_nivel"]]
 script = ExtResource("1_0j0l6")
 pared_de_seguridad = NodePath("ParedDeSeguridad1/CollisionShape2D")
 

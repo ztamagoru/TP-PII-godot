@@ -27,6 +27,11 @@ window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+jugador=""
+paso_nivel=""
+
 [input]
 
 mover_izquierda={

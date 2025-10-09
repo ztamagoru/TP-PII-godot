@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_2wh52"]
 [ext_resource type="Script" uid="uid://cbqphs2cn0bb8" path="res://scenes/main_menu.gd" id="1_yqorp"]
-[ext_resource type="PackedScene" uid="uid://bqkpl6jodajhc" path="res://scenes/niveles/tutorial_movimiento.tscn" id="2_0ykhv"]
+[ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="2_0ykhv"]
 [ext_resource type="Texture2D" uid="uid://raoi6bfo6cpf" path="res://assets/FONDO DE INICIO.jpg" id="3_2wh52"]
 
 [node name="MainMenu" type="Control"]

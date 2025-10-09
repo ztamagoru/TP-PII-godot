@@ -1,7 +1,6 @@
 extends Estado
 
 func enter():
-	pass
 	jugador.sprite.play("quieto")
 	jugador.velocity.x = 0
 

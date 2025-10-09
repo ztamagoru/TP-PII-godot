@@ -1,26 +1,42 @@
 extends Node2D
-
-@export var paso_de_nivel_1 : Area2D
-@export var pared_de_seguridad_1 : CollisionShape2D
-@export var paso_de_nivel_2 : Area2D
-@export var pared_de_seguridad_2 : CollisionShape2D
+#
+#@export var paso_de_nivel_1 : Area2D
+#@export var pared_de_seguridad_1 : CollisionShape2D
+#@export var paso_de_nivel_2 : Area2D
+#@export var pared_de_seguridad_2 : CollisionShape2D
 @export var camara : Camera2D
 
+@export var area_next_level : Area2D
+@export var next_level : PackedScene
+
+@export var death_zone : Area2D
+@export var Respawn : Node2D
+var zonas_respawn : Array[Marker2D] = []
+
 func _ready():
+	for i in get_tree().get_nodes_in_group("paso_nivel"):
+		i.destroy_respawn.connect(get_next_respawn)
+	
+	for child in Respawn.get_children():
+		if child is Marker2D:
+			zonas_respawn.append(child)
+	
 	Globales.current_level = self
 	$Movimiento_plataformas.play("MovimientoPlataformas")
 
 func _process(_delta):
 	pass
-	#if paso_de_nivel_1:
-		#if paso_de_nivel_1.overlaps_body(Globales.jugador):
-			#var tween = create_tween()
-			#tween.tween_property(camara, "position", camara.position + Vector2(1153,0), 1)
-			#pared_de_seguridad_1.disabled = false
-			#paso_de_nivel_1.monitoring = false
-	#if paso_de_nivel_2:
-		#if paso_de_nivel_2.overlaps_body(Globales.jugador):
-			#var tween = create_tween()
-			#tween.tween_property(camara, "position", camara.position + Vector2(1161,0), 1)
-			#pared_de_seguridad_2.disabled = false
-			#paso_de_nivel_2.monitoring = false
+
+func _physics_process(_delta):
+	for body in death_zone.get_overlapping_bodies():
+		if body.is_in_group("jugador"):
+			var current_respawn = zonas_respawn[0]
+			Globales.jugador.global_position = current_respawn.global_position
+	
+	for body in area_next_level.get_overlapping_bodies():
+		if body.is_in_group("jugador"):
+			print("next level")
+			#get_tree().change_scene_to_packed(next_level)
+
+func get_next_respawn():
+	zonas_respawn.pop_front()

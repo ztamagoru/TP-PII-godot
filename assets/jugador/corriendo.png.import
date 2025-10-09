@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brnqvbmq55ouq"
-path="res://.godot/imported/mario-sprite-super-mario-bros-1-mario-1156289219229b0n5zjzl.png-17356267de257f94ed9d13bd2c11adc4.ctex"
+uid="uid://0wapga7gt4sa"
+path="res://.godot/imported/corriendo.png-7a2688cd4fb5b28874a8963d23df08ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mario-sprite-super-mario-bros-1-mario-1156289219229b0n5zjzl.png"
-dest_files=["res://.godot/imported/mario-sprite-super-mario-bros-1-mario-1156289219229b0n5zjzl.png-17356267de257f94ed9d13bd2c11adc4.ctex"]
+source_file="res://assets/jugador/corriendo.png"
+dest_files=["res://.godot/imported/corriendo.png-7a2688cd4fb5b28874a8963d23df08ff.ctex"]
 
 [params]
 

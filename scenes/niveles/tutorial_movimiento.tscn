@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=23 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://cury1qnerll5m" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
@@ -148,6 +148,9 @@ _data = {
 &"RESET": SubResource("Animation_pbop1")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83sip"]
+size = Vector2(1614, 56)
+
 [node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara")]
 script = ExtResource("1_ujkkx")
 camara = NodePath("Camera2D")
@@ -229,3 +232,21 @@ script = ExtResource("3_l52h3")
 libraries = {
 &"": SubResource("AnimationLibrary_10qo4")
 }
+
+[node name="Respawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Respawns"]
+position = Vector2(63, 456)
+
+[node name="Marker2D2" type="Marker2D" parent="Respawns"]
+position = Vector2(1268, 456)
+
+[node name="Marker2D3" type="Marker2D" parent="Respawns"]
+position = Vector2(2404, 456)
+
+[node name="DeathZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(2438, 694)
+shape = SubResource("RectangleShape2D_83sip")
+debug_color = Color(0.996589, 0, 0.183735, 0.42)

@@ -1,7 +1,8 @@
 extends Estado
 
 func enter():
-	#jugador.sprite.play("Jump")
+	print(name)
+	jugador.sprite.play("saltando")
 	jugador.velocity.y = -jugador.impulso_salto
 	
 func physics_update(delta):
@@ -11,7 +12,10 @@ func physics_update(delta):
 	var direccion = Input.get_axis("mover_izquierda", "mover_derecha")
 	jugador.velocity.x = direccion * jugador.speed * delta
 	
-	if jugador.velocity.y > jugador.gravedad:
+	if jugador.velocity.y <= 0:
+		jugador.velocity.y += jugador.gravedad * delta
+		
+	if jugador.velocity.y > 0:
 		get_parent().ir_a_estado_siguiente("Cayendo")
 	
 	if jugador.is_on_floor():
