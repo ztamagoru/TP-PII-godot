@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://bqkpl6jodajhc"]
 
-[ext_resource type="Script" uid="uid://cury1qnerll5m" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
+[ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
 [ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="3_77138"]
 [ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="3_l52h3"]
@@ -151,9 +151,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83sip"]
 size = Vector2(1614, 56)
 
-[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara")]
+[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara", "area_next_level", "death_zone", "Respawn")]
 script = ExtResource("1_ujkkx")
 camara = NodePath("Camera2D")
+area_next_level = NodePath("FinalDeNivel1")
+death_zone = NodePath("DeathZone")
+Respawn = NodePath("Respawns")
 
 [node name="Player" parent="." instance=ExtResource("1_yktgn")]
 z_index = 10

@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://svu0lyyb4fws"]
+[gd_scene load_steps=5 format=3 uid="uid://svu0lyyb4fws"]
 
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_2wh52"]
 [ext_resource type="Script" uid="uid://cbqphs2cn0bb8" path="res://scenes/main_menu.gd" id="1_yqorp"]
-[ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="2_0ykhv"]
 [ext_resource type="Texture2D" uid="uid://raoi6bfo6cpf" path="res://assets/FONDO DE INICIO.jpg" id="3_2wh52"]
+[ext_resource type="PackedScene" uid="uid://bqkpl6jodajhc" path="res://scenes/niveles/tutorial_movimiento.tscn" id="3_ow34m"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2wh52")
 script = ExtResource("1_yqorp")
-tutorial = ExtResource("2_0ykhv")
+tutorial = ExtResource("3_ow34m")
 
 [node name="FondoDeInicio" type="Sprite2D" parent="."]
 position = Vector2(576.5, 324.25)
@@ -29,10 +29,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2wh52")
+theme_override_constants/margin_bottom = 125
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 theme = ExtResource("1_2wh52")
 theme_override_constants/separation = 10
 alignment = 1

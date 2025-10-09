@@ -1,9 +1,5 @@
 extends Node2D
-#
-#@export var paso_de_nivel_1 : Area2D
-#@export var pared_de_seguridad_1 : CollisionShape2D
-#@export var paso_de_nivel_2 : Area2D
-#@export var pared_de_seguridad_2 : CollisionShape2D
+
 @export var camara : Camera2D
 
 @export var area_next_level : Area2D
