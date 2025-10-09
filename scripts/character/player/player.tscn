@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfnbnypf5r2o3"]
+[gd_scene load_steps=19 format=3 uid="uid://dfnbnypf5r2o3"]
 
 [ext_resource type="Script" uid="uid://e3ilg2mrx5nb" path="res://scripts/character/player/player.gd" id="1_i02fc"]
-[ext_resource type="Texture2D" uid="uid://0wapga7gt4sa" path="res://assets/jugador/corriendo.png" id="2_wgm7s"]
+[ext_resource type="Texture2D" uid="uid://bs25nt85u0q4r" path="res://assets/jugador/RunSheet.png" id="2_vwski"]
+[ext_resource type="Texture2D" uid="uid://ddlpnn0no3h3" path="res://assets/jugador/JumpSheet.png" id="3_ck0bj"]
 [ext_resource type="Script" uid="uid://bsrkyetikg3hy" path="res://scripts/FSM/maquina_estado.gd" id="3_kyenk"]
-[ext_resource type="Texture2D" uid="uid://bggvarhgvfd16" path="res://assets/jugador/corriendo2.png" id="3_vwski"]
+[ext_resource type="Texture2D" uid="uid://cin5f6705jxoi" path="res://assets/jugador/StaticSheet.png" id="4_hcrmk"]
 [ext_resource type="Script" uid="uid://dwdmsjgp1skg5" path="res://scripts/character/player/estados/quieto.gd" id="4_wgm7s"]
 [ext_resource type="Script" uid="uid://blj3o2s5jvx51" path="res://scripts/character/player/estados/caminando.gd" id="5_vwski"]
 [ext_resource type="Script" uid="uid://dsvuuho4csgqt" path="res://scripts/character/player/estados/saltando.gd" id="6_ck0bj"]
@@ -12,32 +13,48 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2oloj"]
 size = Vector2(17, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ck0bj"]
-atlas = ExtResource("2_wgm7s")
-region = Rect2(0, 0, 103, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcrmk"]
-atlas = ExtResource("2_wgm7s")
-region = Rect2(128, 0, 128, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjasu"]
+atlas = ExtResource("2_vwski")
+region = Rect2(25, 49, 158, 241)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gvarx"]
-atlas = ExtResource("3_vwski")
-region = Rect2(85, 0, 85, 256)
+atlas = ExtResource("2_vwski")
+region = Rect2(183, 49, 158, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc14i"]
+atlas = ExtResource("2_vwski")
+region = Rect2(341, 49, 158, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx1l1"]
+atlas = ExtResource("2_vwski")
+region = Rect2(487, 49, 154, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04ywf"]
+atlas = ExtResource("3_ck0bj")
+region = Rect2(205, 44, 145, 247)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53s7i"]
+atlas = ExtResource("4_hcrmk")
+region = Rect2(210, 44, 150, 247)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liq50"]
+atlas = ExtResource("3_ck0bj")
+region = Rect2(205, 44, 145, 247)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ck0bj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ck0bj")
+"texture": SubResource("AtlasTexture_jjasu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_vwski")
+"texture": SubResource("AtlasTexture_gvarx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hcrmk")
+"texture": SubResource("AtlasTexture_yc14i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_vwski")
+"texture": SubResource("AtlasTexture_yx1l1")
 }],
 "loop": true,
 "name": &"caminando",
@@ -45,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ck0bj")
+"texture": SubResource("AtlasTexture_04ywf")
 }],
 "loop": true,
 "name": &"cayendo",
@@ -53,7 +70,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gvarx")
+"texture": SubResource("AtlasTexture_53s7i")
 }],
 "loop": true,
 "name": &"quieto",
@@ -61,7 +78,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hcrmk")
+"texture": SubResource("AtlasTexture_liq50")
 }],
 "loop": true,
 "name": &"saltando",
@@ -73,14 +90,15 @@ script = ExtResource("1_i02fc")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+position = Vector2(3, -34)
+scale = Vector2(3.325, 3.125)
 shape = SubResource("RectangleShape2D_2oloj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -5)
-scale = Vector2(0.19, 0.19)
+position = Vector2(1, -32)
+scale = Vector2(0.515, 0.515)
 sprite_frames = SubResource("SpriteFrames_ck0bj")
-animation = &"cayendo"
+animation = &"caminando"
 
 [node name="MaquinaEstado" type="Node" parent="." node_paths=PackedStringArray("jugador")]
 script = ExtResource("3_kyenk")

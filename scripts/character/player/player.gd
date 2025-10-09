@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var gravedad : float = 2000
 @export var sprite : AnimatedSprite2D
 
-@export var hud : Control
+#@export var hud : Control
 
 var vida : int
 var max_vida : int = 500
@@ -16,8 +16,12 @@ func _ready():
 	#Globales.jugador = self
 	#actualizar_hud()
 
-func _physics_process(_delta):
-	pass
+func _process(_delta):
+	if velocity.x < 0:
+		sprite.flip_h = true
+	
+	if velocity.x > 0:
+		sprite.flip_h = false
 
 func inicializar_jugador():
 	vida = max_vida
