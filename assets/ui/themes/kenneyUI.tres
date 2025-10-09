@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=34 format=3 uid="uid://6shp5ck1tnja"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://6shp5ck1tnja"]
 
 [ext_resource type="Texture2D" uid="uid://m4cwgyj7vpv1" path="res://assets/ui/themes/UIpack_vector.svg" id="1"]
 [ext_resource type="FontFile" uid="uid://wtfk08q3f3g2" path="res://assets/ui/themes/kenvector_future.ttf" id="2"]
@@ -154,6 +154,15 @@ expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 region_rect = Rect2(321, 440, 49, 49)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7i145"]
+bg_color = Color(0.537013, 0.53701, 0.537011, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs1gn"]
+bg_color = Color(0.537013, 0.53701, 0.537011, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knm2r"]
+bg_color = Color(0.537013, 0.53701, 0.537011, 1)
+
 [sub_resource type="StyleBoxTexture" id="28"]
 content_margin_left = 12.0
 content_margin_top = 10.0
@@ -278,6 +287,11 @@ PopupMenu/styles/labeled_separator_right = null
 PopupMenu/styles/panel = SubResource("27")
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
+RemapButton/base_type = &"Button"
+RemapButton/styles/disabled = SubResource("StyleBoxFlat_7i145")
+RemapButton/styles/disabled_mirrored = null
+RemapButton/styles/pressed = SubResource("StyleBoxFlat_gs1gn")
+RemapButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_knm2r")
 TextEdit/colors/background_color = Color(0, 0, 0, 0)
 TextEdit/colors/bookmark_color = Color(0.08, 0.49, 0.98, 1)
 TextEdit/colors/brace_mismatch_color = Color(1, 0.2, 0.2, 1)
