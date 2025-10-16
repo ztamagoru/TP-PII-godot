@@ -3,7 +3,7 @@ extends Node2D
 @export var camara : Camera2D
 
 @export var area_next_level : Area2D
-@export var next_level : PackedScene
+@export_file("*.tscn") var next_level
 
 @export var death_zone : Area2D
 @export var Respawn : Node2D
@@ -29,7 +29,7 @@ func _physics_process(_delta):
 	for body in area_next_level.get_overlapping_bodies():
 		if body.is_in_group("jugador"):
 			#print("next level")
-			get_tree().change_scene_to_packed(next_level)
+			get_tree().change_scene_to_file(next_level)
 
 func get_next_respawn():
 	zonas_respawn.pop_front()

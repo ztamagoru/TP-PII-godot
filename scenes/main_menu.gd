@@ -1,12 +1,12 @@
 extends Control
 
-@export var tutorial : PackedScene
+@export_file("*.tscn") var tutorial
 
 func _ready():
 	Globales.main_menu = self
 
 func new_game_pressed():
-	get_tree().change_scene_to_packed(tutorial)
+	get_tree().change_scene_to_file(tutorial)
 
 func continue_game_pressed():
 	pass
