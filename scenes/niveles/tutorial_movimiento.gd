@@ -6,6 +6,7 @@ extends Node2D
 @export_file("*.tscn") var next_level
 
 @export var death_zone : Area2D
+@export var obstaculoquesube : Area2D 
 @export var Respawn : Node2D
 var zonas_respawn : Array[Marker2D] = []
 
@@ -25,7 +26,12 @@ func _physics_process(_delta):
 		if body.is_in_group("jugador"):
 			var current_respawn = zonas_respawn[0]
 			Globales.jugador.global_position = current_respawn.global_position
-	
+	for body in obstaculoquesube.get_overlapping_bodies():
+		if body.is_in_group("jugador"):
+			var current_respawn = zonas_respawn[0]
+			Globales.jugador.global_position = current_respawn.global_position
+
+
 	for body in area_next_level.get_overlapping_bodies():
 		if body.is_in_group("jugador"):
 			#print("next level")
