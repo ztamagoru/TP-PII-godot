@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxbaauekwlgnp"]
+
+[ext_resource type="Script" uid="uid://bpo6mbvfvv5ww" path="res://scenes/components/level select/level_icon.gd" id="1_ef28s"]
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_orsed"]
+
+[sub_resource type="Gradient" id="Gradient_ef28s"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_br5tc"]
+gradient = SubResource("Gradient_ef28s")
+
+[node name="LevelIcon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+script = ExtResource("1_ef28s")
+variant_level = null
+go_to_level = null
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture1D_br5tc")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -24.0
+offset_right = 128.0
+theme = ExtResource("1_orsed")
+text = "level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
