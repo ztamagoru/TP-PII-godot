@@ -12,18 +12,24 @@ func _ready() -> void:
 func create_action_remap_items():
 	for index in range(action_items.size()):
 		var action = action_items[index]
+		var button = RemapButton.new()
+		
+		button.action = action
+		button.custom_minimum_size.y = 55.0
+		video_settings.add_child(button)
+		
+		if button.input_not_existing():
+			button.queue_free()
+			continue
+		else:
+			button._get_ready()
+		
 		var label = Label.new()
 		
 		label.text = correct_input_name(action)
 		label.custom_minimum_size.y = 55.0
 		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		video_settings_labels.add_child(label)
-		
-		var button = RemapButton.new()
-		
-		button.action = action
-		button.custom_minimum_size.y = 55.0
-		video_settings.add_child(button)
 		
 		button.connect("key_changed", Callable(self, "save_player_inputs"))
 
