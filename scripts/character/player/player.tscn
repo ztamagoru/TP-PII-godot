@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfnbnypf5r2o3"]
+[gd_scene load_steps=24 format=3 uid="uid://dfnbnypf5r2o3"]
 
 [ext_resource type="Script" uid="uid://e3ilg2mrx5nb" path="res://scripts/character/player/player.gd" id="1_i02fc"]
 [ext_resource type="Texture2D" uid="uid://bs25nt85u0q4r" path="res://assets/jugador/RunSheet.png" id="2_vwski"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://blj3o2s5jvx51" path="res://scripts/character/player/estados/caminando.gd" id="5_vwski"]
 [ext_resource type="Script" uid="uid://dsvuuho4csgqt" path="res://scripts/character/player/estados/saltando.gd" id="6_ck0bj"]
 [ext_resource type="Script" uid="uid://ssqgmp5okh8h" path="res://scripts/character/player/estados/cayendo.gd" id="7_hcrmk"]
-[ext_resource type="AudioStream" uid="uid://rpdkctm8cejf" path="res://assets/sonidos/saltosonido.ogg" id="9_vwski"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2oloj"]
 size = Vector2(17, 34)
@@ -86,6 +85,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_wgm7s"]
+offsets = PackedFloat32Array(0, 0.251656)
+colors = PackedColorArray(1, 1, 1, 0.564706, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vwski"]
+gradient = SubResource("Gradient_wgm7s")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.6)
+
+[sub_resource type="Curve" id="Curve_ck0bj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.526316, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hcrmk"]
+curve = SubResource("Curve_ck0bj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjasu"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 70.0
+initial_velocity_min = 4.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_hcrmk")
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["jugador"]]
 script = ExtResource("1_i02fc")
 sprite = NodePath("AnimatedSprite2D")
@@ -113,16 +139,22 @@ metadata/_custom_type_script = "uid://c06o2lsklov"
 script = ExtResource("5_vwski")
 metadata/_custom_type_script = "uid://c06o2lsklov"
 
-[node name="Saltando" type="Node" parent="MaquinaEstado" node_paths=PackedStringArray("audioplayer")]
+[node name="Saltando" type="Node" parent="MaquinaEstado" node_paths=PackedStringArray("particulas_salto")]
 script = ExtResource("6_ck0bj")
-audioplayer = NodePath("../../AudioSaltando")
+particulas_salto = NodePath("../../ParticulasSalto")
 metadata/_custom_type_script = "uid://c06o2lsklov"
 
-[node name="Cayendo" type="Node" parent="MaquinaEstado"]
+[node name="Cayendo" type="Node" parent="MaquinaEstado" node_paths=PackedStringArray("particulas_salto")]
 script = ExtResource("7_hcrmk")
+particulas_salto = NodePath("../../ParticulasSalto")
 metadata/_custom_type_script = "uid://c06o2lsklov"
 
-[node name="AudioSaltando" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_vwski")
-volume_db = 24.0
-bus = &"SFX"
+[node name="ParticulasSalto" type="GPUParticles2D" parent="."]
+position = Vector2(-1, 16)
+scale = Vector2(4, 4)
+emitting = false
+amount = 32
+texture = SubResource("GradientTexture2D_vwski")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_jjasu")

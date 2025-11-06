@@ -1,10 +1,9 @@
 extends Estado
 
-@export var audioplayer : AudioStreamPlayer
+@export var particulas_salto : GPUParticles2D
 
 func enter():
 	print(name)
-	audioplayer.play(0)
 	jugador.sprite.play("saltando")
 	jugador.velocity.y = -jugador.impulso_salto
 	
@@ -22,4 +21,6 @@ func physics_update(delta):
 		get_parent().ir_a_estado_siguiente("Cayendo")
 	
 	if jugador.is_on_floor():
+		particulas_salto.restart()
+		particulas_salto.emitting = true
 		get_parent().ir_a_estado_siguiente("Quieto")
