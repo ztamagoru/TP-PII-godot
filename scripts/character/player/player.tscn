@@ -109,10 +109,10 @@ tracks/0/path = NodePath("MaquinaEstado/Dash:current_velocity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [0.0]
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_ck0bj"]
@@ -125,10 +125,10 @@ tracks/0/path = NodePath("MaquinaEstado/Dash:current_velocity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.133333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1200.0, 1200.0, 400.0]
+"values": [1200.0, 800.0, 400.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jjasu"]
@@ -209,6 +209,7 @@ metadata/_custom_type_script = "uid://c06o2lsklov"
 [node name="Dash" type="Node" parent="MaquinaEstado" node_paths=PackedStringArray("anim")]
 script = ExtResource("10_ck0bj")
 anim = NodePath("../../AnimationPlayer")
+current_velocity = 684.386
 
 [node name="ParticulasSalto" type="GPUParticles2D" parent="."]
 position = Vector2(-1, 16)
