@@ -4,15 +4,19 @@ func enter():
 	print(name)
 	jugador.sprite.play("caminando")
 
-func update(delta):
+func _physics_update(delta):
 	var direccion = Input.get_axis("mover_izquierda", "mover_derecha")
 	
 	jugador.velocity.x = direccion * jugador.speed * delta
 	jugador.move_and_slide()
 	
+	if Input.is_action_just_pressed("dash") and jugador._can_dash == true:
+		get_parent().ir_a_estado_siguiente("Dash")
+		return
+	
 	if jugador.velocity.x == 0:
 		get_parent().ir_a_estado_siguiente("Quieto")
-		
+		return
 	
 	if not jugador.is_on_floor():
 		get_parent().ir_a_estado_siguiente("Cayendo")

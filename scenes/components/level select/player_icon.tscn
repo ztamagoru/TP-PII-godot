@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8msblv74whgi"]
+
+[ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="1_5tqn8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lyxr"]
+atlas = ExtResource("1_5tqn8")
+region = Rect2(768, 640, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trhqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lyxr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerIcon" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+expand_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_trhqm")

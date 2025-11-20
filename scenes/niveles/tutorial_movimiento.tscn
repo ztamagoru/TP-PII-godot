@@ -1,16 +1,13 @@
-[gd_scene load_steps=28 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=25 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
 [ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="3_77138"]
-[ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="3_l52h3"]
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="5_pbop1"]
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="6_10qo4"]
-[ext_resource type="PackedScene" uid="uid://cfo2f80uf1hee" path="res://scenes/obstaculo.tscn" id="7_b61a7"]
+[ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="8_7u5yi"]
+[ext_resource type="PackedScene" uid="uid://cnygliupua7od" path="res://scenes/components/collectibles/jetpack.tscn" id="8_83sip"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="8_fqf3n"]
-[ext_resource type="PackedScene" uid="uid://bpk5llc1r2oue" path="res://scenes/obstaculo_movimiento.tscn" id="9_83sip"]
-[ext_resource type="PackedScene" uid="uid://n857l7n2k0u1" path="res://scenes/obstaculomartillo.tscn" id="10_7u5yi"]
-[ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="11_kbase"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10qo4"]
 texture = ExtResource("5_pbop1")
@@ -156,14 +153,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83sip"]
 size = Vector2(1614, 56)
 
-[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara", "area_next_level", "death_zone", "obstaculoquesube", "obstaculoquegira", "Respawn")]
+[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara", "area_next_level", "death_zone", "Respawn")]
 script = ExtResource("1_ujkkx")
 camara = NodePath("Camera2D")
 area_next_level = NodePath("FinalDeNivel1")
-next_level = "uid://svu0lyyb4fws"
+next_level = "uid://plnij4088e4a"
 death_zone = NodePath("DeathZone")
-obstaculoquesube = NodePath("Obstaculo")
-obstaculoquegira = NodePath("ObstaculoMovimiento")
 Respawn = NodePath("Respawns")
 
 [node name="Player" parent="." instance=ExtResource("1_yktgn")]
@@ -237,7 +232,6 @@ movimiento = Vector2(1162, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 323)
-script = ExtResource("3_l52h3")
 
 [node name="Movimiento_plataformas" type="AnimationPlayer" parent="."]
 libraries = {
@@ -370,16 +364,9 @@ text = "el timing es clave"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Obstaculo" parent="." instance=ExtResource("7_b61a7")]
-position = Vector2(836, 1188)
-
-[node name="ObstaculoMovimiento" parent="." instance=ExtResource("9_83sip")]
-position = Vector2(-42, 1583)
-
-[node name="ObstaculoMartillo" parent="." instance=ExtResource("10_7u5yi")]
-position = Vector2(349, 1284)
+[node name="Jetpack" parent="." instance=ExtResource("8_83sip")]
+position = Vector2(3275, 452)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_kbase")
-volume_db = -5.591
+stream = ExtResource("8_7u5yi")
 autoplay = true

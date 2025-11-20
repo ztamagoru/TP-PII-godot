@@ -10,6 +10,8 @@ extends CharacterBody2D
 var vida : int
 var max_vida : int = 500
 
+var _can_dash : bool = true
+
 func _ready():
 	Globales.jugador = self
 	inicializar_jugador()

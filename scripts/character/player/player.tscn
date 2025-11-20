@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dfnbnypf5r2o3"]
+[gd_scene load_steps=28 format=3 uid="uid://dfnbnypf5r2o3"]
 
 [ext_resource type="Script" uid="uid://e3ilg2mrx5nb" path="res://scripts/character/player/player.gd" id="1_i02fc"]
 [ext_resource type="Texture2D" uid="uid://bs25nt85u0q4r" path="res://assets/jugador/RunSheet.png" id="2_vwski"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://blj3o2s5jvx51" path="res://scripts/character/player/estados/caminando.gd" id="5_vwski"]
 [ext_resource type="Script" uid="uid://dsvuuho4csgqt" path="res://scripts/character/player/estados/saltando.gd" id="6_ck0bj"]
 [ext_resource type="Script" uid="uid://ssqgmp5okh8h" path="res://scripts/character/player/estados/cayendo.gd" id="7_hcrmk"]
+[ext_resource type="Script" uid="uid://cyhg8uanl7xcy" path="res://scripts/character/player/dash.gd" id="10_ck0bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2oloj"]
 size = Vector2(17, 34)
@@ -70,6 +71,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_04ywf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04ywf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04ywf")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 22.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_53s7i")
 }],
 "loop": true,
@@ -84,6 +99,43 @@ animations = [{
 "name": &"saltando",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_hcrmk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MaquinaEstado/Dash:current_velocity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ck0bj"]
+resource_name = "current_velocity"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MaquinaEstado/Dash:current_velocity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1200.0, 1200.0, 400.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjasu"]
+_data = {
+&"RESET": SubResource("Animation_hcrmk"),
+&"current_velocity": SubResource("Animation_ck0bj")
+}
 
 [sub_resource type="Gradient" id="Gradient_wgm7s"]
 offsets = PackedFloat32Array(0, 0.251656)
@@ -125,7 +177,12 @@ shape = SubResource("RectangleShape2D_2oloj")
 position = Vector2(1, -32)
 scale = Vector2(0.515, 0.515)
 sprite_frames = SubResource("SpriteFrames_ck0bj")
-animation = &"caminando"
+animation = &"dash"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jjasu")
+}
 
 [node name="MaquinaEstado" type="Node" parent="." node_paths=PackedStringArray("jugador")]
 script = ExtResource("3_kyenk")
@@ -148,6 +205,10 @@ metadata/_custom_type_script = "uid://c06o2lsklov"
 script = ExtResource("7_hcrmk")
 particulas_salto = NodePath("../../ParticulasSalto")
 metadata/_custom_type_script = "uid://c06o2lsklov"
+
+[node name="Dash" type="Node" parent="MaquinaEstado" node_paths=PackedStringArray("anim")]
+script = ExtResource("10_ck0bj")
+anim = NodePath("../../AnimationPlayer")
 
 [node name="ParticulasSalto" type="GPUParticles2D" parent="."]
 position = Vector2(-1, 16)
