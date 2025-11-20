@@ -1,10 +1,10 @@
-[gd_scene load_steps=24 format=4 uid="uid://c3dr67ibgkic3"]
+[gd_scene load_steps=24 format=4 uid="uid://cynnfe7jonl5q"]
 
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="1_0ehnl"]
 [ext_resource type="Script" uid="uid://qq6fbs274x72" path="res://scenes/niveles/levels.gd" id="1_cbbpc"]
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="2_jiyiu"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="3_jiyiu"]
-[ext_resource type="Script" uid="uid://be12jxtqcsu70" path="res://scenes/niveles/camera_2d.gd" id="4_lkhdl"]
+[ext_resource type="Script" path="res://scenes/niveles/camera_2d.gd" id="4_lkhdl"]
 [ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="5_5lhp1"]
 [ext_resource type="PackedScene" uid="uid://bk8v0ahr2n5qj" path="res://scenes/components/paso_de_nivel/level_seccion.tscn" id="6_xbfyf"]
 [ext_resource type="PackedScene" uid="uid://bsq1dtxb4wf8u" path="res://scenes/components/paso_de_nivel/next_level.tscn" id="7_cbbpc"]
@@ -103,14 +103,10 @@ sources/17 = SubResource("TileSetScenesCollectionSource_5lhp1")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkhdl"]
 size = Vector2(263, 56.6372)
 
-[sub_resource type="Animation" id="Animation_pbyxt"]
+[sub_resource type="Animation" id="Animation_0emmd"]
+resource_name = "PlataformasLv1"
 length = 4.0
 loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_5lhp1"]
-resource_name = "seugnda parte-plat1"
-length = 4.0
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -136,10 +132,14 @@ tracks/1/keys = {
 "values": [Vector2(5353, 1183), Vector2(5023, 1061), Vector2(5360, 787), Vector2(5623, 1054), Vector2(5353, 1183)]
 }
 
-[sub_resource type="Animation" id="Animation_0emmd"]
-resource_name = "PlataformasLv1"
+[sub_resource type="Animation" id="Animation_pbyxt"]
 length = 4.0
 loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_5lhp1"]
+resource_name = "seugnda parte-plat1"
+length = 4.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

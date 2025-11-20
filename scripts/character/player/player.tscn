@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://blj3o2s5jvx51" path="res://scripts/character/player/estados/caminando.gd" id="5_vwski"]
 [ext_resource type="Script" uid="uid://dsvuuho4csgqt" path="res://scripts/character/player/estados/saltando.gd" id="6_ck0bj"]
 [ext_resource type="Script" uid="uid://ssqgmp5okh8h" path="res://scripts/character/player/estados/cayendo.gd" id="7_hcrmk"]
-[ext_resource type="Script" path="res://scripts/character/player/dash.gd" id="10_ck0bj"]
+[ext_resource type="Script" uid="uid://cyhg8uanl7xcy" path="res://scripts/character/player/dash.gd" id="10_ck0bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2oloj"]
 size = Vector2(17, 34)
