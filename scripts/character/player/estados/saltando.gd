@@ -20,7 +20,7 @@ func _physics_update(delta):
 	if jugador.velocity.y > 0:
 		get_parent().ir_a_estado_siguiente("Cayendo")
 	
-	if Input.is_action_just_pressed("dash") and jugador._can_dash == true:
+	if Input.is_action_just_pressed("dash") and jugador._can_dash and Globales.object_inventory.has("jetpack_dash") == true:
 		get_parent().ir_a_estado_siguiente("Dash")
 		return
 	
