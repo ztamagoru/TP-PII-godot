@@ -31,7 +31,7 @@ offset_top = 288.0
 offset_right = 544.0
 offset_bottom = 352.0
 level_index = 2
-level_id = ""
+level_id = "nivel_1"
 next_level_left = NodePath("../Level1")
 next_level_right = NodePath("../Level3")
 
@@ -41,7 +41,7 @@ offset_top = 288.0
 offset_right = 672.0
 offset_bottom = 352.0
 level_index = 3
-level_id = ""
+level_id = "nivel_2"
 next_level_left = NodePath("../Level2")
 next_level_right = NodePath("../Level4")
 
@@ -51,7 +51,7 @@ offset_top = 288.0
 offset_right = 800.0
 offset_bottom = 352.0
 level_index = 4
-level_id = ""
+level_id = "nivel_3"
 next_level_left = NodePath("../Level3")
 
 [node name="PlayerIcon" parent="." instance=ExtResource("3_h8014")]
