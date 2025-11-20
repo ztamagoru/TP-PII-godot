@@ -11,9 +11,16 @@ func _init():
 	toggle_mode = true
 	#theme_type_variation = "RemapButton"
 
-func _ready():
+func _get_ready():
 	set_process_unhandled_input(false)
 	update_key_text()
+	input_not_existing()
+
+func input_not_existing():
+	for act in InputMap.get_actions():
+		if act == action:
+			return false
+	return true
 
 func _toggled(button_pressed : bool):
 	set_process_unhandled_input(button_pressed)

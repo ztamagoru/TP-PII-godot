@@ -161,7 +161,7 @@ text = "10"
 layout_mode = 2
 theme = ExtResource("1_8bpd0")
 script = ExtResource("4_s0p4e")
-action_items = Array[String](["mover_izquierda", "mover_derecha", "salto"])
+action_items = Array[String](["mover_arriba", "mover_izquierda", "mover_abajo", "mover_derecha", "salto"])
 metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controles"]

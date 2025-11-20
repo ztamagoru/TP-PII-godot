@@ -28,7 +28,8 @@ func settings_open():
 	settings_menu.visible = !settings_menu.visible
 	
 	if settings_menu.visible:
-		settings_menu.update_button_values()
+		#print("se debería haber abierto el menú de ajustes")
+		settings_menu.VideoSettings.update_resolution_button_values()
 
 func quit_pressed():
 	get_tree().quit()
