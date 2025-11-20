@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=26 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="6_10qo4"]
 [ext_resource type="PackedScene" uid="uid://cfo2f80uf1hee" path="res://scenes/obstaculo.tscn" id="7_b61a7"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="8_fqf3n"]
+[ext_resource type="PackedScene" uid="uid://cnygliupua7od" path="res://scenes/components/collectibles/jetpack.tscn" id="9_83sip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10qo4"]
 texture = ExtResource("5_pbop1")
@@ -368,3 +369,6 @@ vertical_alignment = 1
 
 [node name="Obstaculo" parent="." instance=ExtResource("7_b61a7")]
 position = Vector2(2059, 396)
+
+[node name="Jetpack" parent="." instance=ExtResource("9_83sip")]
+position = Vector2(655, 437)
