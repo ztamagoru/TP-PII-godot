@@ -9,10 +9,10 @@ func _ready():
 	estado_actual.enter()
 
 func _process(_delta):
-	estado_actual.update(_delta)
+	estado_actual._update(_delta)
 
 func _physics_process(_delta):
-	estado_actual.physics_update(_delta)
+	estado_actual._physics_update(_delta)
 
 func ir_a_estado_siguiente(estado_siguiente : String):
 	estado_actual.exit()
