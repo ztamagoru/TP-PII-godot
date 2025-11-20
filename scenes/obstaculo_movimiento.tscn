@@ -16,6 +16,13 @@ script/source = "extends Path2D
 
 const speed : float = 300.0
 
+func _ready():
+	area.body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body):
+	if body.is_in_group(\"jugador\"):
+		get_parent().respawn()
+
 func _physics_process(delta):
 	obstaculo.progress += speed * delta 
 "
@@ -45,5 +52,4 @@ texture = ExtResource("2_yj7nw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
 position = Vector2(12.0466, 7.45657)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0fquv")
