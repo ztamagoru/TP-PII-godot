@@ -1,11 +1,10 @@
-[gd_scene load_steps=29 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=28 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="5_pbop1"]
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="6_10qo4"]
 [ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="8_7u5yi"]
-[ext_resource type="PackedScene" uid="uid://cnygliupua7od" path="res://scenes/components/collectibles/jetpack.tscn" id="8_83sip"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="8_fqf3n"]
 [ext_resource type="PackedScene" path="res://scenes/components/paso_de_nivel/level_seccion.tscn" id="8_kbase"]
 [ext_resource type="PackedScene" path="res://scenes/components/paso_de_nivel/next_level.tscn" id="9_83sip"]
@@ -350,9 +349,6 @@ theme = ExtResource("8_fqf3n")
 text = "el timing es clave"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Jetpack" parent="." instance=ExtResource("8_83sip")]
-position = Vector2(3275, 452)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_7u5yi")
