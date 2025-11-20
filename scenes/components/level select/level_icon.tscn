@@ -1,14 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxbaauekwlgnp"]
+[gd_scene load_steps=9 format=3 uid="uid://dxbaauekwlgnp"]
 
 [ext_resource type="Script" uid="uid://bpo6mbvfvv5ww" path="res://scenes/components/level select/level_icon.gd" id="1_ef28s"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_orsed"]
+[ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="2_br5tc"]
 
 [sub_resource type="Gradient" id="Gradient_ef28s"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_br5tc"]
 gradient = SubResource("Gradient_ef28s")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ef28s"]
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.403922)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oungx"]
+atlas = ExtResource("2_br5tc")
+region = Rect2(704, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6lp7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oungx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="LevelIcon" type="Control"]
 layout_mode = 3
@@ -17,8 +38,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 pivot_offset = Vector2(32, 32)
 script = ExtResource("1_ef28s")
-variant_level = null
-go_to_level = null
+level_id = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -34,5 +54,10 @@ offset_top = -24.0
 offset_right = 128.0
 theme = ExtResource("1_orsed")
 text = "level 1"
+label_settings = SubResource("LabelSettings_ef28s")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_h6lp7")

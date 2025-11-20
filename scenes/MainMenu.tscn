@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2wh52")
 script = ExtResource("1_yqorp")
-level_selector = "uid://bqkpl6jodajhc"
+level_selector = "uid://plnij4088e4a"
 tutorial = "uid://bqkpl6jodajhc"
 continue_button = NodePath("MarginContainer/VBoxContainer/ContinueButton")
 

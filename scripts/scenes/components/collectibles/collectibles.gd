@@ -16,6 +16,9 @@ func _ready():
 		queue_free()
 	
 	base_position = global_position
+	
+	for i in randi_range(0, 10):
+		time += move_speed
 
 func _process(delta : float):
 	time += delta * move_speed

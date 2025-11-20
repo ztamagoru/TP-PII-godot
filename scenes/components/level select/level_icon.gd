@@ -4,7 +4,7 @@ extends Control
 class_name LevelIcon
 
 @export var level_index : int = 1
-@export var variant_level : bool = false
+@export var level_id : String
 @export_file("*.tscn") var go_to_level : String
 
 @export_category("Adjacent Levels")
@@ -14,8 +14,10 @@ class_name LevelIcon
 @export var next_level_right : LevelIcon
 
 func _ready():
-	$Label.text = "level " + str(level_index) + "b" if variant_level else "level " + str(level_index)
+	$Label.text = "level " + str(level_index)
+	$AnimatedSprite2D.visible = not Globales.unlocked_levels.has(level_id)
 
 func _process(delta : float):
 	if Engine.is_editor_hint():
-		$Label.text = "level " + str(level_index) + "b" if variant_level else "level " + str(level_index)
+		$Label.text = "level " + str(level_index)
+		$AnimatedSprite2D.visible = not Globales.unlocked_levels.has(level_id)

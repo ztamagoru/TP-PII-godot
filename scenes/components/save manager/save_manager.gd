@@ -82,5 +82,7 @@ func set_default_game():
 	game = {
 		"collected_items": [],
 		"death_counter": 0,
-		"unlocked_levels": []
+		"unlocked_levels": [
+			"tutorial"
+		]
 	}
