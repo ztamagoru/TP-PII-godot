@@ -25,7 +25,7 @@ offset_right = 368.0
 offset_bottom = 376.0
 level_index = 2
 variant_level = false
-go_to_level = null
+go_to_level = ""
 next_level_up = NodePath("../Level2b")
 next_level_left = NodePath("../Level1")
 next_level_right = NodePath("../Level3")
@@ -37,7 +37,7 @@ offset_right = 568.0
 offset_bottom = 520.0
 level_index = 3
 variant_level = false
-go_to_level = null
+go_to_level = ""
 next_level_left = NodePath("../Level2")
 next_level_right = NodePath("../Level4")
 
@@ -48,7 +48,7 @@ offset_right = 776.0
 offset_bottom = 352.0
 level_index = 4
 variant_level = false
-go_to_level = null
+go_to_level = ""
 next_level_up = NodePath("../Level4b")
 next_level_left = NodePath("../Level3")
 next_level_right = NodePath("../Level5")
@@ -60,7 +60,7 @@ offset_right = 944.0
 offset_bottom = 168.0
 level_index = 4
 variant_level = true
-go_to_level = null
+go_to_level = ""
 next_level_down = NodePath("../Level4")
 
 [node name="Level5" parent="." node_paths=PackedStringArray("next_level_up", "next_level_left") instance=ExtResource("2_h8014")]
@@ -70,7 +70,7 @@ offset_right = 1024.0
 offset_bottom = 368.0
 level_index = 5
 variant_level = false
-go_to_level = null
+go_to_level = ""
 next_level_up = NodePath("../Level4b")
 next_level_left = NodePath("../Level4")
 
@@ -81,7 +81,7 @@ offset_right = 368.0
 offset_bottom = 152.0
 level_index = 2
 variant_level = true
-go_to_level = null
+go_to_level = ""
 next_level_down = NodePath("../Level2")
 
 [node name="PlayerIcon" parent="." instance=ExtResource("3_h8014")]
