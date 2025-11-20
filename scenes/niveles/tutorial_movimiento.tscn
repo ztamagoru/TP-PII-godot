@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=28 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="8_fqf3n"]
 [ext_resource type="PackedScene" uid="uid://bpk5llc1r2oue" path="res://scenes/obstaculo_movimiento.tscn" id="9_83sip"]
 [ext_resource type="PackedScene" uid="uid://n857l7n2k0u1" path="res://scenes/obstaculomartillo.tscn" id="10_7u5yi"]
+[ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="11_kbase"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10qo4"]
 texture = ExtResource("5_pbop1")
@@ -370,10 +371,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Obstaculo" parent="." instance=ExtResource("7_b61a7")]
-position = Vector2(815, 353)
+position = Vector2(836, 1188)
 
 [node name="ObstaculoMovimiento" parent="." instance=ExtResource("9_83sip")]
-position = Vector2(-63, 748)
+position = Vector2(-42, 1583)
 
 [node name="ObstaculoMartillo" parent="." instance=ExtResource("10_7u5yi")]
-position = Vector2(328, 449)
+position = Vector2(349, 1284)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kbase")
+volume_db = -5.591
+autoplay = true
