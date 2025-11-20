@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=24 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
@@ -39,6 +39,13 @@ texture_region_size = Vector2i(64, 64)
 0:7/0 = 0
 10:10/0 = 0
 10:12/0 = 0
+7:11/0 = 0
+7:10/0 = 0
+7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:9/0 = 0
+7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:8/0 = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clt3u"]
 size = Vector2(64, 48)
@@ -66,24 +73,10 @@ sources/16 = SubResource("TileSetAtlasSource_10qo4")
 sources/17 = SubResource("TileSetScenesCollectionSource_b61a7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b61a7"]
-size = Vector2(147.5, 34.5)
-
-[sub_resource type="Gradient" id="Gradient_10qo4"]
-offsets = PackedFloat32Array(0, 0.616438)
-colors = PackedColorArray(0.207843, 0.823529, 0.466667, 1, 0.870588, 0.494118, 0.309804, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b61a7"]
-gradient = SubResource("Gradient_10qo4")
+size = Vector2(131, 34.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10qo4"]
-size = Vector2(146, 30)
-
-[sub_resource type="Gradient" id="Gradient_fqf3n"]
-offsets = PackedFloat32Array(0, 0.575342)
-colors = PackedColorArray(0.207843, 0.823529, 0.466667, 1, 0.870588, 0.494118, 0.309804, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_83sip"]
-gradient = SubResource("Gradient_fqf3n")
+size = Vector2(132, 30)
 
 [sub_resource type="Animation" id="Animation_77138"]
 resource_name = "MovimientoPlataformas"
@@ -195,29 +188,25 @@ tile_set = SubResource("TileSet_b61a7")
 
 [node name="PlataformaVoladora2" type="AnimatableBody2D" parent="."]
 position = Vector2(2959, 426)
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaVoladora2"]
-position = Vector2(-1, 1)
+position = Vector2(0.5, 14)
 shape = SubResource("RectangleShape2D_b61a7")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlataformaVoladora2"]
-position = Vector2(-0.999931, 1.49998)
-scale = Vector2(2.34375, 0.546875)
-texture = SubResource("GradientTexture2D_b61a7")
+[node name="Objetos" type="TileMapLayer" parent="PlataformaVoladora2"]
+tile_map_data = PackedByteArray("AAAAAAAAEAAHAAgAAAD//wAAEAAHAAoAAAA=")
+tile_set = SubResource("TileSet_b61a7")
 
 [node name="PlataformaVoladora1" type="AnimatableBody2D" parent="."]
 position = Vector2(2690, 439)
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlataformaVoladora1"]
-position = Vector2(-6, -2)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_10qo4")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlataformaVoladora1"]
-position = Vector2(-6.99999, -1.00001)
-scale = Vector2(2.3125, 0.531249)
-texture = SubResource("GradientTexture2D_83sip")
+[node name="Plat1" type="TileMapLayer" parent="PlataformaVoladora1"]
+tile_map_data = PackedByteArray("AAD+/wMAEAAEAA0AAAD//wAAEAAHAAoAAAAAAAAAEAAHAAgAAAA=")
+tile_set = SubResource("TileSet_b61a7")
 
 [node name="Movimiento_plataformas" type="AnimationPlayer" parent="."]
 libraries = {
@@ -355,6 +344,7 @@ stream = ExtResource("8_7u5yi")
 autoplay = true
 
 [node name="Secciones" type="Node2D" parent="."]
+visible = false
 
 [node name="LevelSeccion" parent="Secciones" instance=ExtResource("8_kbase")]
 

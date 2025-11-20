@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://du5eoq3cyd83n"]
+
+[sub_resource type="GDScript" id="GDScript_mrokx"]
+script/source = "extends Area2D
+@onready var camara = $Camera2D
+@onready var shape = $CollisionShape2D
+
+
+func _on_body_entered(body):
+	if body.name == \"jugador\":
+		camara.limit_left = position.x
+		camara.limit_top = position.y - (shape.get_shape().size.y * scale.y)
+		camara.limit_right = position.x - (shape.get_shape().size.x * scale.x)
+		camara.limit_bottom = position.y
+"
+
+[node name="Area2D" type="Area2D"]
+script = SubResource("GDScript_mrokx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
