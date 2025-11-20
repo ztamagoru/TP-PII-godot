@@ -22,9 +22,17 @@ func add_collectible(item_id : String):
 	SaveManager.game.collected_items = object_inventory
 	SaveManager.save_game()
 
+func add_level(id : String):
+	if not unlocked_levels.has(id):
+		unlocked_levels.append(id)
+		SaveManager.game.unlocked_levels = unlocked_levels
+		SaveManager.save_game()
+		
+
 func clear_data():
 	object_inventory.clear()
 	unlocked_levels.clear()
+	unlocked_levels.append("tutorial")
 	death_counter = 0
 
 func load_game():

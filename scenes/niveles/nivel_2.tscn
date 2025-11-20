@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=4 uid="uid://3l20n6w7y2t0"]
+[gd_scene load_steps=24 format=4 uid="uid://3l20n6w7y2t0"]
 
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_8sqbm"]
+[ext_resource type="Script" uid="uid://qq6fbs274x72" path="res://scenes/niveles/levels.gd" id="1_m8xqb"]
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="2_b8ju6"]
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="3_5k46n"]
-[ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="4_htw5h"]
 [ext_resource type="PackedScene" uid="uid://cfo2f80uf1hee" path="res://scenes/obstaculo.tscn" id="5_b8ju6"]
 [ext_resource type="PackedScene" uid="uid://bpk5llc1r2oue" path="res://scenes/obstaculo_movimiento.tscn" id="6_5k46n"]
 [ext_resource type="PackedScene" uid="uid://n857l7n2k0u1" path="res://scenes/obstaculomartillo.tscn" id="7_htw5h"]
 [ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="8_tf7x8"]
+[ext_resource type="PackedScene" uid="uid://bk8v0ahr2n5qj" path="res://scenes/components/paso_de_nivel/level_seccion.tscn" id="9_fp8cn"]
+[ext_resource type="PackedScene" uid="uid://bsq1dtxb4wf8u" path="res://scenes/components/paso_de_nivel/next_level.tscn" id="9_m8xqb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htw5h"]
 texture = ExtResource("2_b8ju6")
@@ -170,11 +172,26 @@ _data = {
 &"seugnda parte-plat1": SubResource("Animation_5lhp1")
 }
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8xqb"]
+size = Vector2(3632, 1285)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb8nm"]
+size = Vector2(3488, 1365)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vxlv"]
+size = Vector2(2888, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umxjv"]
+size = Vector2(80, 448)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("death_zone", "Respawn")]
+script = ExtResource("1_m8xqb")
+death_zone = NodePath("DeathZone")
+Respawn = NodePath("Respawns")
 
 [node name="Player" parent="." instance=ExtResource("1_8sqbm")]
 z_index = 10
-position = Vector2(570, 362)
+position = Vector2(0, 1280)
 
 [node name="Tilemaps" type="Node2D" parent="."]
 position = Vector2(-303, 114)
@@ -198,10 +215,6 @@ tile_set = SubResource("TileSet_m8xqb")
 [node name="Objetos" type="TileMapLayer" parent="Tilemaps"]
 tile_map_data = PackedByteArray("AAAMABIAEAAAAAQAAAANABIAEAAAAAQAAAAOABIAEAAAAAQAAAAPABIAEAAAAAQAAAAQABIAEAAAAAQAAAASABIAEAAAAAQAAAAUABIAEAAAAAQAAAAWABIAEAAAAAQAAAAYABIAEAAAAAQAAAAaABEAEAAAAAQAAAAuABAAEAAAAAQAAAAvAA8AEAAAAAQAAAAwABAAEAAAAAQAAAAxAA8AEAAAAAQAAAAyABAAEAAAAAQAAAAzAA8AEAAAAAQAAAA0ABAAEAAAAAQAAAA2ABAAEAAAAAQAAAA3ABAAEAAAAAQAAAA4ABAAEAAAAAQAAAA5ABAAEAAAAAQAAAA8ABAAEAAAAAQAAAA9ABAAEAAAAAQAAAA+ABAAEAAAAAQAAAA/ABAAEAAAAAQAAABAABAAEAAAAAQAAAA+ABEAEAAAAAQAAABDABAAEAAAAAQAAABEABAAEAAAAAQAAABFABAAEAAAAAQAAABGABAAEAAAAAQAAABHABAAEAAAAAQAAABFABEAEAAAAAQAAABJABAAEAAAAAQAAABLABAAEAAAAAQAAABMABAAEAAAAAQAAABNABAAEAAAAAQAAABOABAAEAAAAAQAAABPABAAEAAAAAQAAABNABEAEAAAAAQAAABSABAAEAAAAAQAAABTABAAEAAAAAQAAABUABAAEAAAAAQAAABVABAAEAAAAAQAAABWABAAEAAAAAQAAABXABAAEAAAAAQAAABZABAAEAAAAAQAAABaABAAEAAAAAQAAABbABAAEAAAAAQAAABcABAAEAAAAAQAAABdABAAEAAAAAQAAABeABAAEAAAAAQAAABgABAAEAAAAAQAAABiABAAEAAAAAQAAABjABAAEAAAAAQAAABkABAAEAAAAAQAAABlABAAEAAAAAQAAABmABAAEAAAAAQAAABnABAAEAAAAAQAAABoABAAEAAAAAQAAABpABAAEAAAAAQAAABqABAAEAAAAAQAAABrABAAEAAAAAQAAABsABAAEAAAAAQAAAA=")
 tile_set = SubResource("TileSet_m8xqb")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(573, 323)
-script = ExtResource("4_htw5h")
 
 [node name="Plataforma2" type="AnimatableBody2D" parent="."]
 position = Vector2(5353, 1183)
@@ -272,3 +285,52 @@ position = Vector2(5260, 1129)
 stream = ExtResource("8_tf7x8")
 pitch_scale = 1.5
 autoplay = true
+
+[node name="Secciones" type="Node2D" parent="."]
+
+[node name="LevelSeccion" parent="Secciones" instance=ExtResource("9_fp8cn")]
+position = Vector2(24, -8)
+
+[node name="CollisionShape2D" parent="Secciones/LevelSeccion" index="0"]
+position = Vector2(1440, 760)
+shape = SubResource("RectangleShape2D_m8xqb")
+
+[node name="LevelSeccion2" parent="Secciones" instance=ExtResource("9_fp8cn")]
+position = Vector2(3568, -8)
+
+[node name="CollisionShape2D" parent="Secciones/LevelSeccion2" index="0"]
+position = Vector2(1456, 808)
+shape = SubResource("RectangleShape2D_fb8nm")
+
+[node name="DeathZone" type="Area2D" parent="."]
+position = Vector2(96, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1740, 1424)
+shape = SubResource("RectangleShape2D_2vxlv")
+debug_color = Color(0.996589, 0, 0.183735, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(4592, 1496)
+shape = SubResource("RectangleShape2D_2vxlv")
+debug_color = Color(0.996589, 0, 0.183735, 0.42)
+
+[node name="Respawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Respawns"]
+position = Vector2(0, 1240)
+
+[node name="Marker2D2" type="Marker2D" parent="Respawns"]
+position = Vector2(3336, 1064)
+
+[node name="next_level" parent="." instance=ExtResource("9_m8xqb")]
+position = Vector2(6648, 936)
+new_level_id = "nivel_3"
+
+[node name="CollisionShape2D" parent="next_level" index="0"]
+position = Vector2(-16, -8)
+shape = SubResource("RectangleShape2D_umxjv")
+
+[editable path="Secciones/LevelSeccion"]
+[editable path="Secciones/LevelSeccion2"]
+[editable path="next_level"]

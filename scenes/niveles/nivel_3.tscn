@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=4 uid="uid://bhxj44jlw3mjd"]
+[gd_scene load_steps=23 format=4 uid="uid://bhxj44jlw3mjd"]
 
+[ext_resource type="Script" uid="uid://qq6fbs274x72" path="res://scenes/niveles/levels.gd" id="1_bqg15"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yulff"]
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="2_pkcta"]
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="3_5sar7"]
-[ext_resource type="Script" uid="uid://b20f80u5408en" path="res://scenes/niveles/camera_2d.gd" id="4_bqg15"]
 [ext_resource type="PackedScene" uid="uid://cfo2f80uf1hee" path="res://scenes/obstaculo.tscn" id="5_2d0ab"]
 [ext_resource type="PackedScene" uid="uid://bpk5llc1r2oue" path="res://scenes/obstaculo_movimiento.tscn" id="6_h3cn0"]
 [ext_resource type="PackedScene" uid="uid://n857l7n2k0u1" path="res://scenes/obstaculomartillo.tscn" id="7_1mwpa"]
 [ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="8_pkcta"]
+[ext_resource type="PackedScene" uid="uid://bk8v0ahr2n5qj" path="res://scenes/components/paso_de_nivel/level_seccion.tscn" id="9_5sar7"]
+[ext_resource type="PackedScene" uid="uid://bsq1dtxb4wf8u" path="res://scenes/components/paso_de_nivel/next_level.tscn" id="9_bqg15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jxwr"]
 texture = ExtResource("2_pkcta")
@@ -166,11 +168,23 @@ _data = {
 &"seugnda parte-plat1": SubResource("Animation_5lhp1")
 }
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqg15"]
+size = Vector2(7024, 1285)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2d0ab"]
+size = Vector2(80, 448)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sar7"]
+size = Vector2(6296, 56)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("death_zone", "Respawn")]
+script = ExtResource("1_bqg15")
+death_zone = NodePath("DeathZone")
+Respawn = NodePath("Respawns")
 
 [node name="Player" parent="." instance=ExtResource("1_yulff")]
 z_index = 10
-position = Vector2(570, 362)
+position = Vector2(16, 1248)
 
 [node name="Tilemaps" type="Node2D" parent="."]
 position = Vector2(-303, 114)
@@ -194,10 +208,6 @@ tile_set = SubResource("TileSet_eq3m4")
 [node name="Objetos" type="TileMapLayer" parent="Tilemaps"]
 tile_map_data = PackedByteArray("AAAhABEAEAABAAsAAAAiABEAEAABAAsAAAAoABAAEAABAAsAAAApABAAEAABAAsAAAAqABAAEAABAAsAAAArABAAEAABAAsAAAAsABAAEAABAAsAAAAtABAAEAABAAsAAAAwAA8AEAABAAsAAAAxAA8AEAABAAsAAAAyAA8AEAABAAsAAAAzAA8AEAABAAsAAAA0AA8AEAABAAsAAAA8AA8AEAABAAsAAAA9AA8AEAABAAsAAABFAA8AEAABAAsAAABGAA8AEAABAAsAAABJAA8AEAABAAsAAABKAA8AEAABAAsAAABMAA8AEAABAAsAAABNAA8AEAABAAsAAABPAA8AEAABAAsAAABQAA8AEAABAAsAAABRAA8AEAABAAsAAABSAA8AEAABAAsAAABTAA8AEAABAAsAAABUAA8AEAABAAsAAABVAA8AEAABAAsAAABXAA8AEAABAAsAAABWAA8AEAABAAsAAABYAA8AEAABAAsAAABbAA8AEAABAAsAAABdAA8AEAABAAsAAABfAA8AEAABAAsAAABhAA8AEAABAAsAAABkAA8AEAABAAsAAABlAA8AEAABAAsAAABmAA8AEAABAAsAAABoAA8AEAABAAsAAABpAA8AEAABAAsAAABqAA8AEAABAAsAAABrAA8AEAABAAsAAABsAA8AEAABAAsAAAAfABAAEAABAAsAAAAgABAAEAABAAsAAAAhABAAEAABAAsAAAAiABAAEAABAAsAAAAjABAAEAABAAsAAAAkABAAEAABAAsAAAAbABAAEAABAAsAAAAaABAAEAABAAsAAAAZABAAEAABAAsAAAAYABAAEAABAAsAAAAXABAAEAABAAsAAAAWABAAEAABAAsAAAALABIAEAABAAsAAAAMABIAEAABAAsAAAANABIAEAABAAsAAAAOABIAEAABAAsAAAAPABIAEAABAAsAAAAQABEAEAABAAsAAAARABEAEAABAAsAAAASABEAEAABAAsAAAATABEAEAABAAsAAAAUABEAEAABAAsAAAAVABEAEAABAAsAAAA=")
 tile_set = SubResource("TileSet_eq3m4")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(573, 323)
-script = ExtResource("4_bqg15")
 
 [node name="Plataforma2" type="AnimatableBody2D" parent="."]
 position = Vector2(5353, 1183)
@@ -253,3 +263,35 @@ position = Vector2(4732, 1061)
 stream = ExtResource("8_pkcta")
 pitch_scale = 1.7
 autoplay = true
+
+[node name="Secciones" type="Node2D" parent="."]
+
+[node name="LevelSeccion" parent="Secciones" instance=ExtResource("9_5sar7")]
+position = Vector2(24, -8)
+
+[node name="CollisionShape2D" parent="Secciones/LevelSeccion" index="0"]
+position = Vector2(3128, 765.5)
+shape = SubResource("RectangleShape2D_bqg15")
+
+[node name="next_level" parent="." instance=ExtResource("9_bqg15")]
+position = Vector2(6640, 872)
+
+[node name="CollisionShape2D" parent="next_level" index="0"]
+position = Vector2(-16, -8)
+shape = SubResource("RectangleShape2D_2d0ab")
+
+[node name="DeathZone" type="Area2D" parent="."]
+position = Vector2(96, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(3440, 1440)
+shape = SubResource("RectangleShape2D_5sar7")
+debug_color = Color(0.996589, 0, 0.183735, 0.42)
+
+[node name="Respawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Respawns"]
+position = Vector2(8, 1256)
+
+[editable path="Secciones/LevelSeccion"]
+[editable path="next_level"]

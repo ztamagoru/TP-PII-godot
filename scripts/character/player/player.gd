@@ -4,8 +4,7 @@ extends CharacterBody2D
 @export var speed = 20000
 @export var gravedad : float = 2000
 @export var sprite : AnimatedSprite2D
-
-#@export var hud : Control
+@export var camera : Camera2D
 
 var vida : int
 var max_vida : int = 500

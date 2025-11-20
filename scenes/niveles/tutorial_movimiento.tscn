@@ -1,13 +1,14 @@
-[gd_scene load_steps=25 format=4 uid="uid://bqkpl6jodajhc"]
+[gd_scene load_steps=29 format=4 uid="uid://bqkpl6jodajhc"]
 
 [ext_resource type="Script" uid="uid://clmcwdn3u4dfo" path="res://scenes/niveles/tutorial_movimiento.gd" id="1_ujkkx"]
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yktgn"]
-[ext_resource type="PackedScene" uid="uid://dltr5bbjeqed4" path="res://scenes/components/paso_de_nivel/paso_de_nivel.tscn" id="3_77138"]
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="5_pbop1"]
 [ext_resource type="Texture2D" uid="uid://c68j0y033qj2g" path="res://assets/Tilemap/terrain_grass_cloud.png" id="6_10qo4"]
 [ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="8_7u5yi"]
 [ext_resource type="PackedScene" uid="uid://cnygliupua7od" path="res://scenes/components/collectibles/jetpack.tscn" id="8_83sip"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="8_fqf3n"]
+[ext_resource type="PackedScene" uid="uid://bk8v0ahr2n5qj" path="res://scenes/components/paso_de_nivel/level_seccion.tscn" id="8_kbase"]
+[ext_resource type="PackedScene" uid="uid://bsq1dtxb4wf8u" path="res://scenes/components/paso_de_nivel/next_level.tscn" id="9_83sip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10qo4"]
 texture = ExtResource("5_pbop1")
@@ -85,9 +86,6 @@ colors = PackedColorArray(0.207843, 0.823529, 0.466667, 1, 0.870588, 0.494118, 0
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_83sip"]
 gradient = SubResource("Gradient_fqf3n")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqf3n"]
-size = Vector2(23, 370)
-
 [sub_resource type="Animation" id="Animation_77138"]
 resource_name = "MovimientoPlataformas"
 length = 1.5
@@ -153,10 +151,20 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83sip"]
 size = Vector2(1614, 56)
 
-[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("camara", "area_next_level", "death_zone", "Respawn")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vkrw"]
+size = Vector2(1152, 714)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbase"]
+size = Vector2(176, 706)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yra5"]
+size = Vector2(176, 706)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u5yi"]
+size = Vector2(80, 448)
+
+[node name="TutorialMovimiento" type="Node2D" node_paths=PackedStringArray("death_zone", "Respawn")]
 script = ExtResource("1_ujkkx")
-camara = NodePath("Camera2D")
-area_next_level = NodePath("FinalDeNivel1")
 next_level = "uid://plnij4088e4a"
 death_zone = NodePath("DeathZone")
 Respawn = NodePath("Respawns")
@@ -211,27 +219,6 @@ shape = SubResource("RectangleShape2D_10qo4")
 position = Vector2(-6.99999, -1.00001)
 scale = Vector2(2.3125, 0.531249)
 texture = SubResource("GradientTexture2D_83sip")
-
-[node name="FinalDeNivel1" type="Area2D" parent="."]
-position = Vector2(3349, 387)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalDeNivel1"]
-position = Vector2(105.5, -64)
-shape = SubResource("RectangleShape2D_fqf3n")
-
-[node name="PasoDeNivel1" parent="." node_paths=PackedStringArray("camara") instance=ExtResource("3_77138")]
-position = Vector2(1031, 389)
-camara = NodePath("../Camera2D")
-movimiento = Vector2(1152, 0)
-
-[node name="PasoDeNivel2" parent="." node_paths=PackedStringArray("camara") instance=ExtResource("3_77138")]
-position = Vector2(2189, 389)
-camara = NodePath("../Camera2D")
-movimiento = Vector2(1162, 0)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(573, 323)
 
 [node name="Movimiento_plataformas" type="AnimationPlayer" parent="."]
 libraries = {
@@ -370,3 +357,57 @@ position = Vector2(3275, 452)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_7u5yi")
 autoplay = true
+
+[node name="Secciones" type="Node2D" parent="."]
+
+[node name="LevelSeccion" parent="Secciones" instance=ExtResource("8_kbase")]
+
+[node name="CollisionShape2D" parent="Secciones/LevelSeccion" index="0"]
+position = Vector2(576, 347)
+shape = SubResource("RectangleShape2D_2vkrw")
+
+[node name="LevelSeccion2" parent="Secciones" node_paths=PackedStringArray("previous_section_collision") instance=ExtResource("8_kbase")]
+position = Vector2(1152, 0)
+previous_section_collision = NodePath("../../Node2D/StaticBody2D/CollisionShape2D")
+
+[node name="CollisionShape2D" parent="Secciones/LevelSeccion2" index="0"]
+position = Vector2(576, 347)
+shape = SubResource("RectangleShape2D_2vkrw")
+
+[node name="LevelSeccion3" parent="Secciones" node_paths=PackedStringArray("previous_section_collision") instance=ExtResource("8_kbase")]
+position = Vector2(2304, 0)
+previous_section_collision = NodePath("../../Node2D/StaticBody2D2/CollisionShape2D")
+
+[node name="CollisionShape2D" parent="Secciones/LevelSeccion3" index="0"]
+position = Vector2(576, 347)
+shape = SubResource("RectangleShape2D_2vkrw")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(1072, 351)
+shape = SubResource("RectangleShape2D_kbase")
+disabled = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
+position = Vector2(1144, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
+position = Vector2(1089, 351)
+shape = SubResource("RectangleShape2D_3yra5")
+disabled = true
+
+[node name="next_level" parent="." instance=ExtResource("9_83sip")]
+position = Vector2(3432, 328)
+new_level_id = "nivel_1"
+
+[node name="CollisionShape2D" parent="next_level" index="0"]
+position = Vector2(-16, -8)
+shape = SubResource("RectangleShape2D_7u5yi")
+
+[editable path="Secciones/LevelSeccion"]
+[editable path="Secciones/LevelSeccion2"]
+[editable path="Secciones/LevelSeccion3"]
+[editable path="next_level"]

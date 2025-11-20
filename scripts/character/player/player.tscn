@@ -164,9 +164,10 @@ initial_velocity_max = 15.0
 gravity = Vector3(0, 98, 0)
 scale_curve = SubResource("CurveTexture_hcrmk")
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["jugador"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "camera") groups=["jugador"]]
 script = ExtResource("1_i02fc")
 sprite = NodePath("AnimatedSprite2D")
+camera = NodePath("Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -34)
@@ -219,3 +220,5 @@ texture = SubResource("GradientTexture2D_vwski")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_jjasu")
+
+[node name="Camera2D" type="Camera2D" parent="."]

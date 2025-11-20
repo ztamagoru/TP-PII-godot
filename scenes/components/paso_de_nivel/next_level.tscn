@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsq1dtxb4wf8u"]
+
+[ext_resource type="Script" uid="uid://cwag1r2tkdxnn" path="res://scenes/components/paso_de_nivel/next_level.gd" id="1_l2uph"]
+
+[node name="next_level" type="Area2D"]
+script = ExtResource("1_l2uph")
+next_level = "uid://plnij4088e4a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

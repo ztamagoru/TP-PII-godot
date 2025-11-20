@@ -1,7 +1,5 @@
 extends Node2D
 
-@export_file("*.tscn") var next_level
-
 @export var death_zone : Area2D
 @export var Respawn : Node2D
 var zonas_respawn : Array[Marker2D] = []
@@ -15,7 +13,6 @@ func _ready():
 			zonas_respawn.append(child)
 	
 	Globales.current_level = self
-	$Movimiento_plataformas.play("MovimientoPlataformas")
 
 func _physics_process(_delta):
 	for body in death_zone.get_overlapping_bodies():

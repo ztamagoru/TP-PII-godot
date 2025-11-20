@@ -1,13 +1,16 @@
 extends Area2D
 
-@export var camera : Camera2D
 @export var previous_section_collision : CollisionShape2D
 
+@onready var camera : Camera2D = Globales.jugador.camera
 @onready var shape : CollisionShape2D = $CollisionShape2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("jugador"):
 		return
+	
+	if previous_section_collision:
+		previous_section_collision.disabled = false
 	
 	var rect_shape = shape.shape as RectangleShape2D
 	var extents = rect_shape.extents
