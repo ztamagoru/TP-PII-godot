@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://n857l7n2k0u1"]
+
+[ext_resource type="Texture2D" uid="uid://dch40cmdqt838" path="res://assets/Tilemap/terrain_purple_cloud.png" id="1_eblvr"]
+
+[sub_resource type="Curve2D" id="Curve2D_smyxq"]
+_data = {
+"points": PackedVector2Array(0.225962, 87.9038, -0.225962, -87.9038, 192, 0, -159.279, 2.25394, 159.279, -2.25394, 320, -120, -0.751312, -90.1578, 0.751312, 90.1578, 452, 5)
+}
+point_count = 3
+
+[sub_resource type="GDScript" id="GDScript_eblvr"]
+resource_name = "ObstaculoMartillo"
+script/source = "extends Path2D
+
+@export var area : Area2D
+@export var obstaculo : PathFollow2D
+
+const speed : float = 300.0
+
+func _physics_process(delta):
+	obstaculo.progress += speed * delta 
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdk7a"]
+size = Vector2(57.9407, 31.1233)
+
+[node name="ObstaculoMartillo" type="Path2D" node_paths=PackedStringArray("area", "obstaculo")]
+curve = SubResource("Curve2D_smyxq")
+script = SubResource("GDScript_eblvr")
+area = NodePath("PathFollow2D/Area2D")
+obstaculo = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(192, 0)
+rotation = -1.57337
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Area2D"]
+position = Vector2(19.3194, 17.6885)
+scale = Vector2(0.450396, 0.319318)
+texture = ExtResource("1_eblvr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+position = Vector2(18.9549, 13.5616)
+shape = SubResource("RectangleShape2D_gdk7a")
