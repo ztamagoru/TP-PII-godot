@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bhxj44jlw3mjd"]
+[gd_scene load_steps=18 format=4 uid="uid://bhxj44jlw3mjd"]
 
 [ext_resource type="PackedScene" uid="uid://dfnbnypf5r2o3" path="res://scripts/character/player/player.tscn" id="1_yulff"]
 [ext_resource type="Texture2D" uid="uid://ch0tv13qyqp2f" path="res://assets/Tilemap/spritesheet-tiles-default.png" id="2_pkcta"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cfo2f80uf1hee" path="res://scenes/obstaculo.tscn" id="5_2d0ab"]
 [ext_resource type="PackedScene" uid="uid://bpk5llc1r2oue" path="res://scenes/obstaculo_movimiento.tscn" id="6_h3cn0"]
 [ext_resource type="PackedScene" uid="uid://n857l7n2k0u1" path="res://scenes/obstaculomartillo.tscn" id="7_1mwpa"]
+[ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="8_pkcta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jxwr"]
 texture = ExtResource("2_pkcta")
@@ -247,3 +248,8 @@ position = Vector2(5476, 1038)
 
 [node name="ObstaculoMartillo" parent="." instance=ExtResource("7_1mwpa")]
 position = Vector2(4732, 1061)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pkcta")
+pitch_scale = 1.7
+autoplay = true

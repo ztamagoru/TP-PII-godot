@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://svu0lyyb4fws"]
+[gd_scene load_steps=5 format=3 uid="uid://svu0lyyb4fws"]
 
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="1_2wh52"]
 [ext_resource type="Script" uid="uid://cbqphs2cn0bb8" path="res://scenes/main_menu.gd" id="1_yqorp"]
+[ext_resource type="AudioStream" uid="uid://bpmyk0fqqb4lm" path="res://assets/sonidos/Musica Dou.mp3" id="4_l72w3"]
 [ext_resource type="Texture2D" uid="uid://raoi6bfo6cpf" path="res://assets/Tilemap/FONDO DE INICIO.jpg" id="4_ow34m"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("continue_button")]
@@ -61,6 +62,10 @@ text = "Ajustes"
 layout_mode = 2
 theme = ExtResource("1_2wh52")
 text = "Salir"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l72w3")
+autoplay = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="." method="new_game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="." method="continue_game_pressed"]
