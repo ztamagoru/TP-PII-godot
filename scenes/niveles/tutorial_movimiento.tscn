@@ -7,8 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://bw4votrk28fnr" path="res://assets/sonidos/Musica Retro.mp3" id="8_7u5yi"]
 [ext_resource type="PackedScene" uid="uid://cnygliupua7od" path="res://scenes/components/collectibles/jetpack.tscn" id="8_83sip"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/themes/kenneyUI.tres" id="8_fqf3n"]
-[ext_resource type="PackedScene" uid="uid://bk8v0ahr2n5qj" path="res://scenes/components/paso_de_nivel/level_seccion.tscn" id="8_kbase"]
-[ext_resource type="PackedScene" uid="uid://bsq1dtxb4wf8u" path="res://scenes/components/paso_de_nivel/next_level.tscn" id="9_83sip"]
+[ext_resource type="PackedScene" path="res://scenes/components/paso_de_nivel/level_seccion.tscn" id="8_kbase"]
+[ext_resource type="PackedScene" path="res://scenes/components/paso_de_nivel/next_level.tscn" id="9_83sip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10qo4"]
 texture = ExtResource("5_pbop1")

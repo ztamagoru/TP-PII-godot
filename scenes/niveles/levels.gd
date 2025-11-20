@@ -13,6 +13,7 @@ func _ready():
 			zonas_respawn.append(child)
 	
 	Globales.current_level = self
+	$AnimationPlayer.play("PlataformasLv1")
 
 func _physics_process(_delta):
 	for body in death_zone.get_overlapping_bodies():
