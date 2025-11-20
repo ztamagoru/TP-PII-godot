@@ -7,6 +7,7 @@ extends Node2D
 
 @export var death_zone : Area2D
 @export var obstaculoquesube : Area2D 
+@export var obstaculoquegira : Path2D
 @export var Respawn : Node2D
 var zonas_respawn : Array[Marker2D] = []
 
@@ -27,6 +28,11 @@ func _physics_process(_delta):
 			var current_respawn = zonas_respawn[0]
 			Globales.jugador.global_position = current_respawn.global_position
 	for body in obstaculoquesube.get_overlapping_bodies():
+		if body.is_in_group("jugador"):
+			var current_respawn = zonas_respawn[0]
+			Globales.jugador.global_position = current_respawn.global_position
+	
+	for body in obstaculoquegira.area.get_overlapping_bodies():
 		if body.is_in_group("jugador"):
 			var current_respawn = zonas_respawn[0]
 			Globales.jugador.global_position = current_respawn.global_position

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpk5llc1r2oue"]
+
+[ext_resource type="Texture2D" uid="uid://dch40cmdqt838" path="res://assets/Tilemap/terrain_purple_cloud.png" id="2_yj7nw"]
+
+[sub_resource type="Curve2D" id="Curve2D_0jv41"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 0, 0, 0, 0, 0, 182, 2, 0, 0, 0, 0, 320, 0, 0, 0, 0, 0, 520, 0, 0, 0, 0, 0, 520, 128, 0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 128, 0)
+}
+point_count = 7
+
+[sub_resource type="GDScript" id="GDScript_pt7o4"]
+script/source = "extends Path2D
+
+@export var area : Area2D
+@export var obstaculo : PathFollow2D
+
+const speed : float = 300.0
+
+func _physics_process(delta):
+	obstaculo.progress += speed * delta 
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fquv"]
+size = Vector2(28.3354, 13.0151)
+
+[node name="ObstaculoMovimiento" type="Path2D" node_paths=PackedStringArray("area", "obstaculo")]
+curve = SubResource("Curve2D_0jv41")
+script = SubResource("GDScript_pt7o4")
+area = NodePath("PathFollow2D/Area2D")
+obstaculo = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(128, 0)
+rotation = 0.0370201
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+scale = Vector2(2.51316, 2.07826)
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Area2D"]
+position = Vector2(12.2437, 5.80066)
+rotation = -3.13783
+scale = Vector2(0.230248, 0.137817)
+texture = ExtResource("2_yj7nw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+position = Vector2(12.0466, 7.45657)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_0fquv")
