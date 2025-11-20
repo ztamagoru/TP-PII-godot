@@ -11,6 +11,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("toggle_pause"):
+		await get_tree().process_frame
 		get_tree().change_scene_to_file(main_menu)
 		return
 	

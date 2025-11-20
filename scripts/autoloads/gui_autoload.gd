@@ -29,8 +29,14 @@ func _ready():
 		add_child(new_scene)
 		new_scene.hide()
 
+var hide_in_scenes : Array[String] = [ "MainMenu", "LevelSelect" ]
+
 func _input(_event):
-	if Input.is_action_just_pressed("toggle_pause") and not is_instance_valid(Globales.main_menu):
+	if Input.is_action_just_pressed("toggle_pause"):
+	
+		if hide_in_scenes.has(get_tree().current_scene.name):
+			return
+		
 		var pause_menu = get_node("/root/GUI/PauseMenu")
 		
 		pause_menu.visible = !pause_menu.visible
